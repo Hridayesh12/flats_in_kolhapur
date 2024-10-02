@@ -1,1 +1,1 @@
-export const baseUrl = 'http://192.168.22.25:3000'
+export const baseUrl = 'https://flats-in-kolhapur.vercel.app'
