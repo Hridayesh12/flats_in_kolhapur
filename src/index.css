@@ -1,13 +1,93 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Import Tailwind base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font-face */
+@font-face {
+  font-family: 'Kollektif';
+  /* Replace with the actual font name */
+  src: url('http://localhost:3000/assets/fonts/Kollektif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Apply the custom font to the entire body */
+body {
+  font-family: 'Kollektif';
+}
+
+/* Scrollbar styling specifically for horizontal scrollbar */
+/* Webkit-based browsers */
+.filter::-webkit-scrollbar {
+  height: 0%;
+  /* Set height for horizontal scrollbar */
+}
+
+.filter::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.filter::-webkit-scrollbar-thumb {
+  background: #b7b7b7;
+}
+
+.filter::-webkit-scrollbar-thumb:hover {
+  background: #b7b7b7;
+}
+
+/* Add additional custom scrollbar styles for Firefox */
+.filter {
+  scrollbar-width: thin;
+  /* Firefox specific */
+  scrollbar-color: #b7b7b7 #f1f1f1;
+}
+
+/* Scrollbar styling */
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b7b7b7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b7b7b7;
+}
+
+/* Range input styling */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  background: black;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: black;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 4px;
+  height: 4px;
+  background: black;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background: black;
 }
