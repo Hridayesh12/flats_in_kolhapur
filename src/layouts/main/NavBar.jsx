@@ -72,6 +72,7 @@ const NavBar = () => {
           className="bg-base-600 text-base-100 ml-10 mr-2 my-1 rounded border-2 border-base-100 flex-1 focus:outline-none hidden sm:block"
           placeholder="Press enter to search..."
           value={searchText}
+          autoFocus
           onChange={(e) => setSearchText(e.target.value)}
           onKeyDown={handleSearchLogic}
         />

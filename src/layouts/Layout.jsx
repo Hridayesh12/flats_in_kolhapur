@@ -20,7 +20,7 @@ const Layout = () => {
   return (
     <div className='flex flex-col items-center max-w-[2000px] mx-auto' style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
       <NavBar />
-      <div className='flex-grow'>
+      <div className='flex-grow w-full'>
         <Outlet />
       </div>
      <div className='w-full flex sm:hidden'>
