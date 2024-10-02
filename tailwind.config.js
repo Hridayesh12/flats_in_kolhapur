@@ -15,6 +15,7 @@ module.exports = {
         700: '#E3E3E3',
         800: '#f5f5f5',
         900: '#545454',
+        1000: '#696969'
       },
       facebook: '#4267B2',    // Facebook Blue
       twitter: '#1DA1F2',     // Twitter Blue

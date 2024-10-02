@@ -31,7 +31,7 @@ const Footer = () => {
 
     return (
         <div className='flex flex-row items-center justify-between w-full bg-base-100 shadow-footer-shadow px-4 py-3'>
-            <div onClick={handleSearchClick} className="cursor-pointer">
+            <div onClick={handleSearchClick} className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                 <img
                     src={`${baseUrl}/assets/svgs/footer_icons/search.svg`}
                     className="w-full h-full"
@@ -39,10 +39,10 @@ const Footer = () => {
                 />
             </div>
             {isSearchVisible && (
-                <div ref={inputRef} className="relative flex items-center">
+                <div ref={inputRef} className="relative flex items-center w-full">
                     <input
                         type="text"
-                        className="rounded-l-full border-l-2 border-t-2 border-b-2 border-r-0 border-base-600 px-4 py-2 focus:outline-none"
+                        className="flex-1 rounded-l-full border-l-2 border-t-2 border-b-2 border-r-0 border-base-600 px-4 py-2 focus:outline-none"
                         placeholder="Flats In Kolhapur..."
                         autoFocus
                     />
@@ -54,13 +54,12 @@ const Footer = () => {
                         }}
                         className="text-base-600 flex items-center justify-center gap-1 rounded-r-full border-r-2 border-t-2 border-b-2 border-l-2 border-base-600 px-4 py-2"
                     >
-                        Search
-                        <img src={`${baseUrl}/assets/svgs/footer_icons/searchF.svg`} className="h-4" alt="search input"/>
+                        <img src={`${baseUrl}/assets/svgs/footer_icons/searchF.svg`} className="h-6" alt="search input"/>
                     </button>
                 </div>
             )}
             <div>
-                <Link to="/favorite">
+                <Link to="/favorite" className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                     {location.pathname.split("/").pop() === 'favorite' ? (
                         <img
                             src={`${baseUrl}/assets/svgs/footer_icons/favF.svg`}
@@ -77,7 +76,7 @@ const Footer = () => {
                 </Link>
             </div>
             <div>
-                <Link to="/my-account">
+                <Link to="/my-account" className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                     {location.pathname.split("/").pop() === 'my-account' ? (
                         <img
                             src={`${baseUrl}/assets/svgs/footer_icons/accountF.svg`}
