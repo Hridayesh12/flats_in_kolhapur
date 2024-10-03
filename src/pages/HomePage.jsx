@@ -40,15 +40,15 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className='flex flex-col h-full w-full border-2 border-whatsapp'>
+    <div className='flex flex-col h-full w-full'>
       {/* Filters */}
-      <div className={`flex flex-col w-full border-2 border-instagram  ${isVisible ? 'h-auto' : 'h-0 overflow-hidden'} transition-all duration-300`}>
+      <div className={`flex flex-col w-full  ${isVisible ? 'h-auto' : 'h-0 overflow-hidden'} transition-all duration-300`}>
         <DropDownFilter />
         <TypeFilters />
         <ConfigFilters />
       </div>
       {/* Listings */}
-      <div className='flex-grow border-2 border-blue-500 overflow-auto' ref={listingsRef}>
+      <div className='flex-grow overflow-auto' ref={listingsRef}>
        <Listings />
       </div>
     </div>

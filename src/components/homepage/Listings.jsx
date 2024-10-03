@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProjectCard from './ProjectCard'
+import { useSelector } from 'react-redux';
 
 const projects = [
   {
@@ -159,15 +160,22 @@ const projects = [
 ]
 
 const Listings = () => {
+
+  const filters = useSelector((state)=>state.filters);
+  console.log(filters);
+
+  useEffect(()=>{
+    console.log("Run only when filter changes")
+  },[filters])
   return (
     <div className='w-full flex flex-col items-start justify-center relative'>
-      <div className='flex items-center justify-between w-full border-2 border-base-600 py-2 px-4 sm:px-12 absolute z-50 top-0 bg-base-100'>
+      <div className='flex items-center justify-between w-full  py-2 px-4 sm:px-12 sticky z-50 top-0 bg-base-100'>
         {/* Set a width that matches the ProjectCard */}
         <p className='text-left w-80'>Total Properties: {projects.length}</p>
       </div>
-      <div className='flex w-full flex-wrap border-2 border-whatsapp relative'>
+      <div className='flex w-full flex-wrap relative gap-2 px-0 sm:px-8'>
         {projects.map((project) => (
-          <div className='border-2 border-base-600 mx-auto m-2' key={project.projectId}>
+          <div className=' mx-auto' key={project.projectId}>
             <ProjectCard
               image={project.image}
               name={project.name}

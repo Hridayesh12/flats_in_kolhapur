@@ -42,7 +42,7 @@ const Footer = () => {
                 <div ref={inputRef} className="relative flex items-center w-full">
                     <input
                         type="text"
-                        className="flex-1 rounded-l-full border-l-2 border-t-2 border-b-2 border-r-0 border-base-600 px-4 py-2 focus:outline-none"
+                        className="flex-1 rounded-l-md border-l-2 border-t-2 border-b-2 border-r-0 border-base-400 px-4 py-2 focus:outline-none"
                         placeholder="Flats In Kolhapur..."
                         autoFocus
                     />
@@ -52,9 +52,9 @@ const Footer = () => {
                             // Redirect to home page or handle search
                             setSearchVisible(false);
                         }}
-                        className="text-base-600 flex items-center justify-center gap-1 rounded-r-full border-r-2 border-t-2 border-b-2 border-l-2 border-base-600 px-4 py-2"
+                        className="text-base-600 flex items-center justify-center gap-1 rounded-r-md border-r-2 border-t-2 border-b-2 border-base-400 px-4 py-2"
                     >
-                        <img src={`${assetsUrl}/assets/svgs/footer_icons/searchF.svg`} className="h-6" alt="search input"/>
+                        <img src={`${assetsUrl}/assets/svgs/footer_icons/search.svg`} className="h-6" alt="search input"/>
                     </button>
                 </div>
             )}

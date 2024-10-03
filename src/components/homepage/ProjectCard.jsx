@@ -55,9 +55,9 @@ const ProjectCard = ({
 		event.stopPropagation()
 		setIsShareOpen((prev) => !prev);
 	};
-	console.log("Favprite", isFav);
 	return (
-		<div
+		<motion.div
+		initial={{scale:0}} whileInView={{scale:1}}
 		style={{ boxShadow: "0px 2px 5px 0px #00000040" }}
 			className='w-80 flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
 			// onClick={handleCardClick}
@@ -239,7 +239,7 @@ const ProjectCard = ({
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

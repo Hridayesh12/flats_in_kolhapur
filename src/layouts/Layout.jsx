@@ -36,7 +36,7 @@ const Layout = () => {
         <NavBar />
       </div>
       <div
-        className='flex-grow w-full border-2 border-facebook'
+        className='flex-grow w-full'
         style={{ height: outletHeight }}
       >
         <Outlet />

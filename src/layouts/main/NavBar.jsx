@@ -69,7 +69,7 @@ const NavBar = () => {
         <input
           ref={searchRef}
           type="text"
-          className="bg-base-600 text-base-100 ml-10 my-1 rounded-l-full px-2 border-l-2 border-t-2 border-b-2 border-r-0 border-base-100 flex-1 focus:outline-none hidden sm:block"
+          className="bg-base-600 text-base-100 ml-10 my-1 rounded-l-md px-2 border-l-2 border-t-2 border-b-2 border-r-0 border-base-100 flex-1 focus:outline-none hidden sm:block"
           placeholder="Press enter to search..."
           value={searchText}
           autoFocus
@@ -81,7 +81,7 @@ const NavBar = () => {
         <img
           onClick={toggleSearch}
           src={`${assetsUrl}/assets/svgs/navbar_icons/search.svg`}
-          className={`${searchOpen ? "w-9 h-14 cursor-pointer hidden sm:block rounded-r-full border-r-2 border-t-2 border-b-2 border-l-2":"w-9 h-full cursor-pointer hidden sm:block"}`}
+          className={`${searchOpen ? "w-9 h-14 cursor-pointer hidden sm:block rounded-r-md border-r-2 border-t-2 border-b-2":"w-9 h-full cursor-pointer hidden sm:block"}`}
           alt="Search"
         />
         <Link to="/favorite">

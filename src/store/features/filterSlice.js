@@ -1,17 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    filters: {
         type: 'flat',
         config: null,
-        location: null,
-        minPrice: null,
-        maxPrice: null,
-        projectStatus: null,
+        area: null,
+        minPrice: 100000,
+        maxPrice: 50000000,
+        possessionStatus: null,
         limit: 5,
         offset: 0
-    },
-    totalLength: 0,
 };
 
 const filterSlice = createSlice({
@@ -19,24 +16,23 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         setFilters: (state, { payload }) => {
-            state.filters = payload.projects;
             if (payload.type) {
-                state.filters.type = payload.type
+                state.type = payload.type
             }
             if (payload.config) {
-                state.filters.config = payload.config
+                state.config = payload.config
             }
-            if (payload.location) {
-                state.filters.location = payload.location
+            if (payload.area) {
+                state.area = payload.area
             }
             if (payload.minPrice) {
-                state.filters.minPrice = payload.minPrice
+                state.minPrice = payload.minPrice
             }
             if (payload.maxPrice) {
-                state.filters.maxPrice = payload.maxPrice
+                state.maxPrice = payload.maxPrice
             }
-            if (payload.projectStatus) {
-                state.filters.projectStatus = payload.projectStatus
+            if (payload.possessionStatus) {
+                state.possessionStatus = payload.possessionStatus
             }
             state.offset = 0;
         },
