@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { baseUrl } from "../../config/url";
+import { assetsUrl } from "../../config/url";
 import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
@@ -54,12 +54,12 @@ const NavBar = () => {
     <div className="bg-base-600 text-base-100 flex flex-row justify-between w-full px-4 py-3 sm:px-12 sm:py-5 relative">
       <Link to="/">
         <img
-          src={`${baseUrl}/assets/svgs/flats_in_kop_mobile_icon.svg`}
+          src={`${assetsUrl}/assets/svgs/flats_in_kop_mobile_icon.svg`}
           className="w-full h-full block sm:hidden"
           alt="Flats In Kolhapur Logo"
         />
         <img
-          src={`${baseUrl}/assets/svgs/flats_in_kop_desktop_icon.svg`}
+          src={`${assetsUrl}/assets/svgs/flats_in_kop_desktop_icon.svg`}
           className="w-full h-full hidden sm:block"
           alt="Flats In Kolhapur Logo"
         />
@@ -80,20 +80,20 @@ const NavBar = () => {
       <div className="flex items-center gap-4">
         <img
           onClick={toggleSearch}
-          src={`${baseUrl}/assets/svgs/navbar_icons/search.svg`}
+          src={`${assetsUrl}/assets/svgs/navbar_icons/search.svg`}
           className={`${searchOpen ? "w-9 h-14 cursor-pointer hidden sm:block rounded-r-full border-r-2 border-t-2 border-b-2 border-l-2":"w-9 h-full cursor-pointer hidden sm:block"}`}
           alt="Search"
         />
         <Link to="/favorite">
           <img
-            src={`${baseUrl}/assets/svgs/navbar_icons/favorite.svg`}
+            src={`${assetsUrl}/assets/svgs/navbar_icons/favorite.svg`}
             className="w-7 h-full hidden sm:block"
             alt="Favorite"
           />
         </Link>
         <Link to="/my-account">
           <img
-            src={`${baseUrl}/assets/svgs/navbar_icons/account.svg`}
+            src={`${assetsUrl}/assets/svgs/navbar_icons/account.svg`}
             className="w-7 h-full hidden sm:block"
             alt="Account"
           />
@@ -101,7 +101,7 @@ const NavBar = () => {
 
         <img
           onClick={toggleMenu}
-          src={`${baseUrl}/assets/svgs/navbar_icons/hamburger.svg`}
+          src={`${assetsUrl}/assets/svgs/navbar_icons/hamburger.svg`}
           className="w-10 sm:w-11 h-full cursor-pointer"
           alt="Hamburger"
         />

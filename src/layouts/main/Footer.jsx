@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { baseUrl } from '../../config/url';
+import { assetsUrl } from '../../config/url';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className='flex flex-row items-center justify-between w-full bg-base-100 shadow-footer-shadow px-4 py-3'>
             <div onClick={handleSearchClick} className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                 <img
-                    src={`${baseUrl}/assets/svgs/footer_icons/search.svg`}
+                    src={`${assetsUrl}/assets/svgs/footer_icons/search.svg`}
                     className="w-full h-full"
                     alt="Search"
                 />
@@ -54,7 +54,7 @@ const Footer = () => {
                         }}
                         className="text-base-600 flex items-center justify-center gap-1 rounded-r-full border-r-2 border-t-2 border-b-2 border-l-2 border-base-600 px-4 py-2"
                     >
-                        <img src={`${baseUrl}/assets/svgs/footer_icons/searchF.svg`} className="h-6" alt="search input"/>
+                        <img src={`${assetsUrl}/assets/svgs/footer_icons/searchF.svg`} className="h-6" alt="search input"/>
                     </button>
                 </div>
             )}
@@ -62,13 +62,13 @@ const Footer = () => {
                 <Link to="/favorite" className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                     {location.pathname.split("/").pop() === 'favorite' ? (
                         <img
-                            src={`${baseUrl}/assets/svgs/footer_icons/favF.svg`}
+                            src={`${assetsUrl}/assets/svgs/footer_icons/favF.svg`}
                             className="w-full h-full"
                             alt="Favorite"
                         />
                     ) : (
                         <img
-                            src={`${baseUrl}/assets/svgs/footer_icons/fav.svg`}
+                            src={`${assetsUrl}/assets/svgs/footer_icons/fav.svg`}
                             className="w-full h-full"
                             alt="Favorite"
                         />
@@ -79,13 +79,13 @@ const Footer = () => {
                 <Link to="/my-account" className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                     {location.pathname.split("/").pop() === 'my-account' ? (
                         <img
-                            src={`${baseUrl}/assets/svgs/footer_icons/accountF.svg`}
+                            src={`${assetsUrl}/assets/svgs/footer_icons/accountF.svg`}
                             className="w-full h-full"
                             alt="Account"
                         />
                     ) : (
                         <img
-                            src={`${baseUrl}/assets/svgs/footer_icons/account.svg`}
+                            src={`${assetsUrl}/assets/svgs/footer_icons/account.svg`}
                             className="w-full h-full"
                             alt="Account"
                         />

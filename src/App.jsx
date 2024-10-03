@@ -2,11 +2,14 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import Layout from "./layouts/Layout";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 const WebsitePage = lazy(() => import("./pages/WebsitePage"));
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
       <Suspense fallback={<div>Laoding...</div>}>
         <Routes>
           <Route element={<Layout />}>
@@ -27,6 +30,7 @@ const App = () => {
         </Routes>
       </Suspense>
     </BrowserRouter>
+    </Provider>
   );
 };
 

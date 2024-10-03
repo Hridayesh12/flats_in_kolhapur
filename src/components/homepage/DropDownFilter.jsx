@@ -1,5 +1,5 @@
 import React from 'react'
-import { baseUrl } from '../../config/url'
+import { assetsUrl } from '../../config/url'
 
 const DropDownFilter = () => {
   return (
@@ -70,7 +70,7 @@ const DropDownFilter = () => {
                         //     setLocationFilterList(!openLocationFilterList);
                         // }}
                     > 
-                    <img src={`${baseUrl}/assets/svgs/filter_icons/filter.svg`} alt="Filters" />
+                    <img src={`${assetsUrl}/assets/svgs/filter_icons/filter.svg`} alt="Filters" />
                     </button>
                 </div>
     </div>
