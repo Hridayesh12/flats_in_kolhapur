@@ -81,7 +81,7 @@ const Listings = () => {
 				hasMore={projects?.length !== totalProjects}
 				loader={<h4>Loading...</h4>}
 				endMessage={<p style={{ textAlign: "center" }}>Completed</p>}> */}
-				<div className='flex w-full flex-wrap relative gap-2 px-0 sm:px-8'>
+				<div className={`flex w-full flex-wrap relative gap-2 px-0 sm:px-8`}>
 					{projects.map((project) => (
 						<div className=' mx-auto' key={project.projectId}>
 							<ProjectCard

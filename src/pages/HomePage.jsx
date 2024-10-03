@@ -48,7 +48,7 @@ const HomePage = () => {
         <ConfigFilters />
       </div>
       {/* Listings */}
-      <div className='flex-grow overflow-auto' ref={listingsRef}>
+      <div className={`flex-grow overflow-auto`} ref={listingsRef}>
        <Listings />
       </div>
     </div>

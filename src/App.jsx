@@ -7,6 +7,7 @@ import { store } from "./store/store";
 import { AuthProvider } from "./contexts/AuthProvider";
 import NavBar from "./layouts/main/NavBar";
 import AboutPage from "./pages/AboutPage";
+import Login from "./layouts/Login";
 const WebsitePage = lazy(() => import("./pages/WebsitePage"));
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           {/* Redirecting unknown url to 404 page */}
           {/* <Route path="*" element={<Page404 />} /> */}
         </Routes>
+        <Login />
       </Suspense>
     </BrowserRouter>
     </Provider>
