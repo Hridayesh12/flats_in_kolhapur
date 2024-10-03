@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     projects: [],
-    totalLength: 0,
+    totalProjects: 0,
+    hasMore: true
 };
 
 const projectSlice = createSlice({
@@ -10,32 +11,37 @@ const projectSlice = createSlice({
     initialState,
     reducers: {
         setProjects: (state, { payload }) => {
+            console.log("Payload Of Projects", payload);
             state.projects = payload.projects;
-            state.totalLength = payload.totalLength;
+            state.totalProjects = payload.totalProjects;
+            state.hasMore = payload.hasMore;
         },
         setNextProjects: (state, { payload }) => {
             state.projects = state.projects.concat(payload.projects);
-            if (payload.totalLength) {
-                state.totalLength = payload.totalLength;
+            state.hasMore = payload.hasMore;
+            if (payload.totalProjects) {
+                state.totalProjects = payload.totalProjects;
             }
         },
-        // updateIndividualUser: (state, { payload }) => {
-        //     const updatedUsers = state.users.map((user) => {
-        //         if (user.id === payload.user.id) {
-        //             return payload.user;
-        //         } else {
-        //             return user;
-        //         }
-        //     });
-        //     state.users = updatedUsers;
-        // },
-        // deleteUser: (state, { payload }) => {
-        //     state.users = state.users.filter((user) => user.id !== payload.id);
-        //     state.totalLength -= 1;
-        // },
+        setHasMore: (state, { payload }) => {
+            state.hasMore = payload.doesHaveMore;
+        },
+
+        setLikeProject: (state, { payload }) => {
+            // Find the project by _id and toggle its isFav property
+            const projectIndex = state.projects.findIndex(
+                (project) => project._id === payload.projectId
+            );
+            
+            if (projectIndex !== -1) {
+                // Toggle the isFav value
+                state.projects[projectIndex].isFav = !state.projects[projectIndex].isFav;
+            }
+        }
     },
 });
 
-export const { setProjects, setNextProjects } = projectSlice.actions;
+export const { setProjects, setNextProjects, setHasMore, setLikeProject } = projectSlice.actions;
 
 export default projectSlice.reducer;
+

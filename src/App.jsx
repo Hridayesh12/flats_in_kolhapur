@@ -4,11 +4,15 @@ import routes from "./routes";
 import Layout from "./layouts/Layout";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { AuthProvider } from "./contexts/AuthProvider";
+import NavBar from "./layouts/main/NavBar";
+import AboutPage from "./pages/AboutPage";
 const WebsitePage = lazy(() => import("./pages/WebsitePage"));
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <AuthProvider>
+      <Provider store={store}>
       <BrowserRouter>
       <Suspense fallback={<div>Laoding...</div>}>
         <Routes>
@@ -24,6 +28,7 @@ const App = () => {
               );
             })}
           </Route>
+          <Route exact={true} path="/about" element={<div><NavBar /><AboutPage /></div>} />
           <Route exact={true} path="/:domain" element={<WebsitePage />} />
           {/* Redirecting unknown url to 404 page */}
           {/* <Route path="*" element={<Page404 />} /> */}
@@ -31,6 +36,7 @@ const App = () => {
       </Suspense>
     </BrowserRouter>
     </Provider>
+    </AuthProvider>
   );
 };
 

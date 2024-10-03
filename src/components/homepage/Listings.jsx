@@ -1,198 +1,115 @@
-import React, { useEffect } from 'react'
-import ProjectCard from './ProjectCard'
-import { useSelector } from 'react-redux';
-
-const projects = [
-  {
-    "image": "/images/project1.jpg",
-    "name": "Luxury Apartment",
-    "price": 5000000,
-    "bhk": 3,
-    "location": "Downtown City",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "1",
-    "isFav": true
-  },
-  {
-    "image": "/images/project2.jpg",
-    "name": "Cozy Studio",
-    "price": 3000000,
-    "bhk": 1,
-    "location": "Suburb Area",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "2",
-    "isFav": false
-  },
-  {
-    "image": "/images/project3.jpg",
-    "name": "Modern Villa",
-    "price": 12000000,
-    "bhk": 4,
-    "location": "Beachfront",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "3",
-    "isFav": true
-  },
-  {
-    "image": "/images/project4.jpg",
-    "name": "Affordable Housing",
-    "price": 2500000,
-    "bhk": 2,
-    "location": "New Development",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "4",
-    "isFav": false
-  },
-  {
-    "image": "/images/project5.jpg",
-    "name": "Penthouse Suite",
-    "price": 20000000,
-    "bhk": 5,
-    "location": "City Center",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "5",
-    "isFav": true
-  },
-  {
-    "image": "/images/project6.jpg",
-    "name": "Eco-Friendly House",
-    "price": 3500000,
-    "bhk": 2,
-    "location": "Green Valley",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "6",
-    "isFav": false
-  },
-  {
-    "image": "/images/project7.jpg",
-    "name": "Family Home",
-    "price": 4500000,
-    "bhk": 3,
-    "location": "Suburban Area",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "7",
-    "isFav": true
-  },
-  {
-    "image": "/images/project8.jpg",
-    "name": "High-Rise Apartment",
-    "price": 9000000,
-    "bhk": 2,
-    "location": "City Skyline",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "8",
-    "isFav": false
-  },
-  {
-    "image": "/images/project9.jpg",
-    "name": "Charming Cottage",
-    "price": 3000000,
-    "bhk": 1,
-    "location": "Countryside",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "9",
-    "isFav": true
-  },
-  {
-    "image": "/images/project10.jpg",
-    "name": "Spacious Bungalow",
-    "price": 7500000,
-    "bhk": 4,
-    "location": "Lakeside",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "10",
-    "isFav": false
-  },
-  {
-    "image": "/images/project11.jpg",
-    "name": "Designer Flat",
-    "price": 6000000,
-    "bhk": 3,
-    "location": "Urban Area",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "11",
-    "isFav": true
-  },
-  {
-    "image": "/images/project12.jpg",
-    "name": "Luxury Condo",
-    "price": 13000000,
-    "bhk": 2,
-    "location": "Uptown",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "12",
-    "isFav": false
-  },
-  {
-    "image": "/images/project13.jpg",
-    "name": "Chic Apartment",
-    "price": 5000000,
-    "bhk": 2,
-    "location": "Downtown",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "13",
-    "isFav": true
-  },
-  {
-    "image": "/images/project14.jpg",
-    "name": "Mountain Retreat",
-    "price": 8500000,
-    "bhk": 3,
-    "location": "Hillside",
-    "domain": "Residential",
-    "priceUnit": "INR",
-    "projectId": "14",
-    "isFav": false
-  }
-]
+import { useEffect } from "react";
+import ProjectCard from "./ProjectCard";
+import { useDispatch, useSelector } from "react-redux";
+// import InfiniteScroll from "react-infinite-scroll-component";
+import { setFilters, setOffset } from "../../store/features/filterSlice";
+import { fetchAllProjects } from "../../services/projectService";
+import {
+	setNextProjects,
+	setProjects,
+} from "../../store/features/projectSlice";
 
 const Listings = () => {
+	const projects = useSelector((state) => state.projects.projects);
+	const totalProjects = useSelector((state) => state.projects.totalProjects);
+	const hasMore = useSelector((state) => state.projects.hasMore);
+	const dispatchEvent = useDispatch();
 
-  const filters = useSelector((state)=>state.filters);
-  console.log(filters);
+	console.log("Has More", hasMore);
+	const filters = useSelector((state) => state.filters);
+	const limit = filters.limit;
+	const offset = filters.offset;
 
-  useEffect(()=>{
-    console.log("Run only when filter changes")
-  },[filters])
-  return (
-    <div className='w-full flex flex-col items-start justify-center relative'>
-      <div className='flex items-center justify-between w-full  py-2 px-4 sm:px-12 sticky z-50 top-0 bg-base-100'>
-        {/* Set a width that matches the ProjectCard */}
-        <p className='text-left w-80'>Total Properties: {projects.length}</p>
-      </div>
-      <div className='flex w-full flex-wrap relative gap-2 px-0 sm:px-8'>
-        {projects.map((project) => (
-          <div className=' mx-auto' key={project.projectId}>
-            <ProjectCard
-              image={project.image}
-              name={project.name}
-              price={project.price}
-              bhk={project.bhk}
-              location={project.location}
-              domain={project.domain}
-              priceUnit={project.priceUnit}
-              projectId={project.projectId}
-              isFav={project.isFav}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+	const initialFetch = async () => {
+    dispatchEvent(
+      setFilters( {
+        type: 'flat',
+        config: null,
+        area: null,
+        minPrice: 100000,
+        maxPrice: 50000000,
+        possessionStatus: null,
+        limit: 10,
+        offset: 0
+})
+    )
+		const params = filters;
+		const response = await fetchAllProjects({ params });
+		console.log("Response From Initial Fetch", response);
+		dispatchEvent(setProjects(response.data));
+	};
+
+	const fetchMoreData = async () => {
+		console.log("Hitting Again With");
+		dispatchEvent(
+			setOffset({
+				newOffset: limit,
+			})
+		);
+		const params = filters;
+
+		const response = await fetchAllProjects({ params });
+		dispatchEvent(setNextProjects(response.data));
+	};
+	const filterFetch = async () => {
+		const params = filters;
+		const response = await fetchAllProjects({ params });
+		dispatchEvent(setProjects(response.data));
+	};
+	useEffect(() => {
+		dispatchEvent(
+			setFilters({
+				limit: 10,
+				offset: 0,
+			})
+		);
+		filterFetch();
+	}, [filters]);
+	useEffect(() => {
+		initialFetch();
+	}, []);
+	return (
+		<div className='w-full flex flex-col items-start justify-center relative'>
+			<div className='flex items-center justify-between w-full  py-2 px-4 sm:px-12 sticky z-40 top-0 bg-base-100'>
+				{/* Set a width that matches the ProjectCard */}
+				<p className='text-left w-80'>Total Properties: {totalProjects}</p>
+			</div>
+
+			{/* <InfiniteScroll
+				dataLength={totalProjects}
+				next={fetchMoreData} // Function to fetch the next batch
+				hasMore={projects?.length !== totalProjects}
+				loader={<h4>Loading...</h4>}
+				endMessage={<p style={{ textAlign: "center" }}>Completed</p>}> */}
+				<div className='flex w-full flex-wrap relative gap-2 px-0 sm:px-8'>
+					{projects.map((project) => (
+						<div className=' mx-auto' key={project.projectId}>
+							<ProjectCard
+								key={project._id}
+								image={project.displayImage}
+								name={project.title}
+								builder={project.subtitle}
+								price={project.configurations
+									.map((item) => item.price)
+									.filter((config) => config)
+									.join("-")}
+								priceUnit={project.configurations[0].priceUnit}
+								bhk={project.configurations
+									.map((item) => item.config.match(/\d+/))
+									.filter((config) => config)
+									.join(", ")}
+								location={project.location.area}
+								domain={project.domain}
+								description={project.description}
+								projectId={project._id}
+								isFav={project.isFav}
+							/>
+						</div>
+					))}
+				</div>
+			{/* </InfiniteScroll> */}
+		</div>
+	);
 };
 
 export default Listings;
-

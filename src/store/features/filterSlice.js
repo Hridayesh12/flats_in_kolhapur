@@ -7,7 +7,7 @@ const initialState = {
         minPrice: 100000,
         maxPrice: 50000000,
         possessionStatus: null,
-        limit: 5,
+        limit: 10,
         offset: 0
 };
 
@@ -16,6 +16,7 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         setFilters: (state, { payload }) => {
+            console.log("New Payload", payload);
             if (payload.type) {
                 state.type = payload.type
             }
@@ -37,8 +38,9 @@ const filterSlice = createSlice({
             state.offset = 0;
         },
         setOffset: (state, { payload }) => {
-            state.filters.offset += payload.newOffset;
+            state.offset += payload.newOffset;
         },
+       
     },
 });
 

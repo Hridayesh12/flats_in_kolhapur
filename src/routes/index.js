@@ -14,10 +14,6 @@ const routes = [
         component: HomePage,
     },
     {
-        path: '/about',
-        component: AboutPage,
-    },
-    {
         path: '/favorite',
         component: FavoritesPage,
     },

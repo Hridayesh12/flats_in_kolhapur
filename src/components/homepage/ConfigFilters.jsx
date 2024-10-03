@@ -36,7 +36,7 @@ const ConfigFilters = () => {
 	const handleConfigChange = (selectedConfig) => {
 		dispatch(
 			setFilters({
-				config: selectedConfig,
+				config: selectedConfig.toLowerCase(),
 			})
 		);
 	};
@@ -74,7 +74,7 @@ const ConfigFilters = () => {
 					key={`${activeType}-${config}`} // Ensure unique key for each type-config pair
 					onClick={() => handleConfigChange(config)}
 					className={`px-2 py-0.5 text-[11px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 ${
-						activeConfig === config ? "bg-base-400 text-white" : ""
+						activeConfig && activeConfig.toUpperCase() === config ? "bg-base-400 text-white" : ""
 					}`}
 					variants={itemVariants} 
 					transition={{

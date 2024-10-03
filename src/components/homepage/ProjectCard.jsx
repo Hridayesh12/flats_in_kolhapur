@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { assetsUrl } from '../../config/url';
 import {
 	FaFacebook,
 	FaTwitter,
@@ -8,6 +9,12 @@ import {
 	FaTelegram,
 } from "react-icons/fa";
 import { MdClose } from "react-icons/md"; 
+import { useAuth } from "../../contexts/AuthProvider";
+import { getCurrentLead } from "../../services/authService";
+import { postPutFavoriteProject } from "../../services/projectService";
+import { setLikeProject } from "../../store/features/projectSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ProjectCard = ({
 	image,
@@ -20,6 +27,10 @@ const ProjectCard = ({
 	projectId,
 	isFav
 }) => {
+	const navigate = useNavigate();
+
+	const { openLogin, isLoggedIn, setIsLoggedIn } = useAuth();
+	const dispatch = useDispatch();
 	const description =
 		"fnrg grigg tijgrgr grorgr grtrggr rtigjrgorjgrg rojgrgr togjrgr grgorjgrg rrgrorgrgrg rotgrtjgg rojgrgrojgr grogrgr grtogrtgr ";
 	const [isNameOverflowed, setIsNameOverflowed] = useState(false);
@@ -29,7 +40,33 @@ const ProjectCard = ({
 	const nameRef = useRef(null);
 	const descriptionRef = useRef(null);
 
+	const toggleSharePopup = (event) => {
+		event.stopPropagation()
+		setIsShareOpen((prev) => !prev);
+	};
 
+	const favCallBack = async(projectId)=>{
+		const resp = await postPutFavoriteProject(projectId);
+			console.log("This Ran");
+	}
+	const handleFavLogic = async(event, projectId) => {
+		event.stopPropagation()
+		const resp = await getCurrentLead();
+		console.log("Resp",resp);
+		if(resp.status > 250){
+			setIsLoggedIn(false);
+			openLogin();
+			if(isLoggedIn){
+				await favCallBack();
+			}
+		}
+		else{
+			const resp = await postPutFavoriteProject(projectId);
+			dispatch(
+				setLikeProject({projectId: projectId})
+			)
+		}
+	}
 	useEffect(() => {
 		const checkOverflow = () => {
 			if (nameRef.current) {
@@ -49,22 +86,16 @@ const ProjectCard = ({
 
 		return () => window.removeEventListener("resize", checkOverflow);
 	}, []);
-
-
-	const toggleSharePopup = (event) => {
-		event.stopPropagation()
-		setIsShareOpen((prev) => !prev);
-	};
 	return (
 		<motion.div
 		initial={{scale:0}} whileInView={{scale:1}}
 		style={{ boxShadow: "0px 2px 5px 0px #00000040" }}
 			className='w-80 flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
-			// onClick={handleCardClick}
+			onClick={()=>{navigate(`/${domain}`)}}
 		>
 			<div className='h-80 w-80'>
 				<img
-					src={`http://3.111.16.234:5000/v1${image}`}
+					src={`http://192.168.1.131:5000/v1${image}`}
 					className='h-full w-full object-cover'
 					alt='Card'
 				/>
@@ -109,18 +140,18 @@ const ProjectCard = ({
 						}}>
 						{description}
 					</p>
-					<div className='flex items-center gap-1 min-h-full max-w-[40%] min-w-[40%]'>
+					<div className='flex items-center gap-3 min-h-full max-w-[40%] min-w-[40%]'>
 						<span 
-                        // onClick={(e)=>{handleFavLogic(e,projectId)}}
+                        onClick={(e)=>{handleFavLogic(e,projectId)}}
                         >
-							{isFav !== 'Not Logged In' && isFav ? 
+							{isFav ? 
 								<img
-								src={"http://3.111.16.234/react-website/assets/images/dark_heart.svg"}
+								src={`${assetsUrl}/assets/svgs/project_card_icons/filled_heart.svg`}
 								alt='Heart'
 								className='w-5'
 							/>:
 							<img
-								src={"http://3.111.16.234/react-website/assets/images/heart 1.png"}
+								src={`${assetsUrl}/assets/svgs/project_card_icons/empty_heart.svg`}
 								alt='Heart'
 								className='w-5'
 							/>
@@ -132,9 +163,9 @@ const ProjectCard = ({
 								onClick={toggleSharePopup}
 								className='bg-blue-500 text-white rounded-full flex items-center justify-center relative'>
 								<img
-									src={"http://3.111.16.234/react-website/assets/images/send.png"}
+									src={`${assetsUrl}/assets/svgs/project_card_icons/share.svg`}
 									alt='Share'
-									className='w-4'
+									className='w-[18px]'
 								/>
 							</button>
 

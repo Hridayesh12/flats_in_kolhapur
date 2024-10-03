@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import NavBar from './main/NavBar';
 import Footer from './main/Footer';
 import { Outlet } from 'react-router-dom';
+import Login from './Login';
 
 const Layout = () => {
   const [outletHeight, setOutletHeight] = useState('auto');
@@ -44,6 +45,7 @@ const Layout = () => {
       <div className='w-full flex sm:hidden' ref={footerRef}>
         <Footer />
       </div>
+      <Login />
     </div>
   );
 };
