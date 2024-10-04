@@ -8,6 +8,7 @@ import {
 	setNextProjects,
 	setProjects,
 } from "../../store/features/projectSlice";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Listings = () => {
 	const projects = useSelector((state) => state.projects.projects);
@@ -29,7 +30,7 @@ const Listings = () => {
         minPrice: 100000,
         maxPrice: 50000000,
         possessionStatus: null,
-        limit: 10,
+        limit: 1,
         offset: 0
 })
     )
@@ -59,7 +60,7 @@ const Listings = () => {
 	useEffect(() => {
 		dispatchEvent(
 			setFilters({
-				limit: 10,
+				limit: 1,
 				offset: 0,
 			})
 		);
@@ -75,14 +76,14 @@ const Listings = () => {
 				<p className='text-left w-80'>Total Properties: {totalProjects}</p>
 			</div>
 
-			{/* <InfiniteScroll
+			<InfiniteScroll
 				dataLength={totalProjects}
 				next={fetchMoreData} // Function to fetch the next batch
 				hasMore={projects?.length !== totalProjects}
 				loader={<h4>Loading...</h4>}
-				endMessage={<p style={{ textAlign: "center" }}>Completed</p>}> */}
-				<div className={`flex w-full flex-wrap relative gap-2 px-0 sm:px-8`}>
-					{projects.map((project) => (
+				endMessage={<p style={{ textAlign: "center" }}>{totalProjects > 0 && `You’re all caught up!`}</p>}>
+				<div className={`flex w-screen flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
+					{projects?.map((project) => (
 						<div className=' mx-auto' key={project.projectId}>
 							<ProjectCard
 								key={project._id}
@@ -107,7 +108,7 @@ const Listings = () => {
 						</div>
 					))}
 				</div>
-			{/* </InfiniteScroll> */}
+			</InfiniteScroll>
 		</div>
 	);
 };

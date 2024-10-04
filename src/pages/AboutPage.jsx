@@ -4,13 +4,13 @@ import { assetsUrl } from '../config/url';
 const AboutPage = () => {
   return (
 		<div
-			className='bg-cover bg-center h-[92vh] overflow-auto w-full '
+			className='bg-cover bg-center border-2 border-instagram w-full h-[90vh] flex flex-col justify-between'
 			style={{
 				backgroundImage:
 					"url('/assets/images/aboutpage/bg.jpg')",
 			}}>
 			<div
-				className='text-base-100 opacity-90  py-6 px-8 h-50'
+				className='text-base-100 opacity-90  py-6 px-8 flex-1'
 				style={{
 					background:
 						"linear-gradient(to top right, rgba(46, 46, 46, 0.651), rgb(0, 0, 0))",
@@ -45,7 +45,7 @@ const AboutPage = () => {
 				</p>
 			</div>
 
-			<div className='w-full h-40 p-4 bg-[rgba(0,0,0,0.7)] px-7 py-7'>
+			<div className='w-full p-4 bg-[rgba(0,0,0,0.7)] px-7 py-7'>
 				<p className='text-[15px] text-base-300 font-bold mb-1'>Contact Us</p>
 				<p className='text-[15px] text-base-300 mb-2'>+91 99992 25254</p>
 				<div className='flex justify-between items-start '>

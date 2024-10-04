@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-        type: 'flat',
-        config: null,
-        area: null,
-        minPrice: 100000,
-        maxPrice: 50000000,
-        possessionStatus: null,
-        limit: 10,
-        offset: 0
+    type: 'flat',
+    config: null,
+    area: null,
+    minPrice: 100000,
+    maxPrice: 50000000,
+    possessionStatus: null,
+    limit: 1,
+    offset: 0
 };
 
 const filterSlice = createSlice({
@@ -40,7 +40,7 @@ const filterSlice = createSlice({
         setOffset: (state, { payload }) => {
             state.offset += payload.newOffset;
         },
-       
+
     },
 });
 

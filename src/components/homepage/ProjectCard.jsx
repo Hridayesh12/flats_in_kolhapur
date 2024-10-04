@@ -27,12 +27,16 @@ const ProjectCard = ({
 	projectId,
 	isFav
 }) => {
+const description =
+		"fnrg grigg tijgrgr grorgr grtrggr rtigjrgorjgrg rojgrgr togjrgr grgorjgrg rrgrorgrgrg rotgrtjgg rojgrgrojgr grogrgr grtogrtgr ";
+	// Assuming you have a project object with necessary fields
+
+
 	const navigate = useNavigate();
 
 	const { openLogin, isLoggedIn, setIsLoggedIn } = useAuth();
 	const dispatch = useDispatch();
-	const description =
-		"fnrg grigg tijgrgr grorgr grtrggr rtigjrgorjgrg rojgrgr togjrgr grgorjgrg rrgrorgrgrg rotgrtjgg rojgrgrojgr grogrgr grtogrtgr ";
+	
 	const [isNameOverflowed, setIsNameOverflowed] = useState(false);
 	const [isDescriptionOverflowed, setIsDescriptionOverflowed] = useState(false);
 	const [isShareOpen, setIsShareOpen] = useState(false); // State for controlling share popup visibility
@@ -67,6 +71,40 @@ const ProjectCard = ({
 			)
 		}
 	}
+const shareUrl = `http://192.168.22.25:3000/${domain}`;
+    const shareMessage = `Check out this project: ${name}\nLocation: ${location}\nDescription: ${description}`;
+
+    const handleWhatsAppShare = (event) => {
+        event.stopPropagation();
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage + ' ' + shareUrl)}`;
+        window.open(whatsappUrl, "_blank");
+    };
+
+    const handleFacebookShare = (event) => {
+        event.stopPropagation();
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+        window.open(facebookUrl, "_blank");
+    };
+
+    const handleTwitterShare = (event) => {
+        event.stopPropagation();
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}&url=${encodeURIComponent(shareUrl)}`;
+        window.open(twitterUrl, "_blank");
+    };
+
+    const handleInstagramShare = (event) => {
+        event.stopPropagation();
+        // Instagram does not support sharing via URL, redirecting to Instagram app
+        alert("Please share directly on Instagram!");
+    };
+
+    const handleTelegramShare = (event) => {
+        event.stopPropagation();
+        const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareMessage)}`;
+        window.open(telegramUrl, "_blank");
+    };
+
+
 	useEffect(() => {
 		const checkOverflow = () => {
 			if (nameRef.current) {
@@ -95,7 +133,7 @@ const ProjectCard = ({
 		>
 			<div className='h-80 w-80'>
 				<img
-					src={`http://192.168.1.131:5000/v1${image}`}
+					src={`http://192.168.22.25:5000/v1${image}`}
 					className='h-full w-full object-cover'
 					alt='Card'
 				/>
@@ -179,7 +217,7 @@ const ProjectCard = ({
 										stiffness: 300, // Higher stiffness makes it faster and bouncier
 										damping: 20, // Damping controls how oscillations decay; lower = more bounces
 									}}
-									className='absolute -top-12 -left-10 transform -translate-x-1/2 flex justify-center items-center rounded-full p-2'
+									className='absolute -top-12 -left-14 transform -translate-x-1/2 flex justify-center items-center rounded-full p-2'
 									style={{
 										background: "radial-gradient(circle, gray,white, white)",
 										backdropFilter: "blur(2.5px)",
@@ -195,6 +233,7 @@ const ProjectCard = ({
 												stiffness: 300, // Higher stiffness makes it faster and bouncier
 												damping: 20, // Damping controls how oscillations decay; lower = more bounces
 											}}
+											onClick={handleFacebookShare}
 											className='absolute -top-2 left-[35%] transform -translate-x-1/2 -translate-y-1/2 bg-base-300 rounded-full p-1 h-fit w-fit'>
 											<FaFacebook className='w-6 h-6 text-facebook' />{" "}
 											{/* Facebook Color */}
@@ -209,6 +248,7 @@ const ProjectCard = ({
 												stiffness: 300, // Higher stiffness makes it faster and bouncier
 												damping: 20, // Damping controls how oscillations decay; lower = more bounces
 											}}
+											onClick={handleTwitterShare}
 											className='absolute -left-0 top-[23%] transform -translate-x-1/2 -translate-y-1/2 bg-base-300 rounded-full p-1 h-fit w-fit'>
 											<FaTwitter className='w-5 h-5 text-twitter' />{" "}
 											{/* Twitter Color */}
@@ -223,6 +263,7 @@ const ProjectCard = ({
 												stiffness: 300, // Higher stiffness makes it faster and bouncier
 												damping: 20, // Damping controls how oscillations decay; lower = more bounces
 											}}
+											onClick={handleInstagramShare}
 											className='absolute right-0 top-[20%] transform translate-x-1/2 -translate-y-1/2 bg-base-300 rounded-full p-1 h-fit w-fit'>
 											<FaInstagram className='w-6 h-6 text-instagram' />{" "}
 											{/* Instagram Color */}
@@ -237,6 +278,7 @@ const ProjectCard = ({
 												stiffness: 300, // Higher stiffness makes it faster and bouncier
 												damping: 20, // Damping controls how oscillations decay; lower = more bounces
 											}}
+											onClick={handleWhatsAppShare}
 											className='absolute bottom-0 left-[60%] transform -translate-x-1/2 translate-y-1/2 bg-base-300 rounded-full p-1 h-fit w-fit'>
 											<FaWhatsapp className='w-6 h-6 text-whatsapp' />{" "}
 											{/* WhatsApp Color */}
@@ -251,6 +293,7 @@ const ProjectCard = ({
 												stiffness: 300, // Higher stiffness makes it faster and bouncier
 												damping: 20, // Damping controls how oscillations decay; lower = more bounces
 											}}
+											onClick={handleTelegramShare}
 											className='absolute bottom-0 left-4 bg-base-300 rounded-full p-1 h-fit w-fit'>
 											<FaTelegram className='w-6 h-6 text-telegram' />{" "}
 											{/* Telegram Color */}
