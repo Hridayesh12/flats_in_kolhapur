@@ -12,7 +12,7 @@ const FavCard = ({ price, bhk, name, location,description, img, priceUnit }) => 
   return (
        <div className="bg-base-100 shadow-xl flex border-[1px] border-base-300">
       <div className="w-[20%] h-[100%] ">
-         <img src={`http://192.168.1.131:5000/v1${img}`} alt="Card" className="object-cover w-full h-full" />
+         <img src={`http://3.111.16.234:5000/v1${img}`} alt="Card" className="object-cover w-full h-full" />
       </div>
 
       <div className='flex flex-col items-start justify-between p-2 w-[42%]'>

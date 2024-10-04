@@ -71,7 +71,7 @@ const description = desc;
 			)
 		}
 	}
-const shareUrl = `http://192.168.1.131:3000/${domain}`;
+const shareUrl = `http://3.111.16.234:3000/${domain}`;
     const shareMessage = `Check out this project: ${name}\nLocation: ${location}\nDescription: ${description}`;
 
     const handleWhatsAppShare = (event) => {
@@ -133,7 +133,7 @@ const shareUrl = `http://192.168.1.131:3000/${domain}`;
 		>
 			<div className='h-80 w-80'>
 				<img
-					src={`http://192.168.1.131:5000/v1${image}`}
+					src={`http://3.111.16.234:5000/v1${image}`}
 					className='h-full w-full object-cover'
 					alt='Card'
 				/>

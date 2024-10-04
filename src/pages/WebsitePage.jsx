@@ -114,8 +114,8 @@ function WebsitePage() {
             />
     <meta property="og:title" content={`${project?.title}`} />
     <meta property="og:description" content={`${project?.description}`} />
-    <meta property="og:image" content={`${`http://192.168.1.131:5000/v1${project?.displayImage}`}`} />
-    <meta property="og:url" content={`${`http://192.168.1.131:3000/${domain}`}`} />
+    <meta property="og:image" content={`${`http://3.111.16.234:5000/v1${project?.displayImage}`}`} />
+    <meta property="og:url" content={`${`http://3.111.16.234:3000/${domain}`}`} />
     <meta property="og:type" content="website" />
           </Helmet>
 
