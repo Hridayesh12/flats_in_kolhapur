@@ -156,7 +156,7 @@ function WebsitePage() {
 
             <div className="bg-[#ecedef] rounded-r-lg text-center p-3">
               <img
-                src="assets/flats/rera-logo.png"
+                src="/assets/images/rera-logo.png"
                 alt="RERA Logo"
                 className="mx-auto mb-2"
               />

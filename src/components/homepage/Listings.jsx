@@ -101,7 +101,7 @@ const Listings = () => {
 									.join(", ")}
 								location={project.location.area}
 								domain={project.domain}
-								description={project.description}
+								desc={project.description}
 								projectId={project._id}
 								isFav={project.isFav}
 							/>

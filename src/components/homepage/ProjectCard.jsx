@@ -25,10 +25,10 @@ const ProjectCard = ({
 	domain,
 	priceUnit,
 	projectId,
+	desc,
 	isFav
 }) => {
-const description =
-		"fnrg grigg tijgrgr grorgr grtrggr rtigjrgorjgrg rojgrgr togjrgr grgorjgrg rrgrorgrgrg rotgrtjgg rojgrgrojgr grogrgr grtogrtgr ";
+const description = desc;
 	// Assuming you have a project object with necessary fields
 
 

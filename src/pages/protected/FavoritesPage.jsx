@@ -31,15 +31,16 @@ const FavoritesPage = () => {
 
  if(!isLoggedIn) return navigate("/");
   return (
-    <div className="container  px-2 py-4">
+    <div className="container  px-2 py-4 mx-auto">
       {/* Favorite Count Section */}
-      <div className="bg-base-600 text-base-100 flex justify-between items-center p-3">
-        <span className='text-lg font-bold'>Favorite</span>
-        <span className='text-lg font-bold'>{favProject.length}</span> {/* Adjust the count dynamically if needed */}
-      </div>
+      <div className="bg-base-600 text-base-100 p-4 flex justify-between items-center">
+      <span className='text-lg font-bold'>Favorite</span>
+      <span className='text-lg font-bold'>{favProject.length}</span> 
+                    </div>
+
       
       {/* Card Section */}
-      <div className="mt-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         {favProject?.map((card, index) => (
           <FavCard
             key={index}
