@@ -13,11 +13,13 @@ import RenderCarousel from "../components/dynamicpage/RenderCarousel";
 import ImgGallery from "../components/dynamicpage/ImgGallery";
 
 function WebsitePage() {
+
+  const location = useLocation();
   const domain = location.pathname.split("/")[1];
   const [project, setProject] = useState(null);
   const { openLogin, loginOpen, closeLogin } = useAuth();
 
-  const location = useLocation();
+  
   const fetchProject = async (domain) => {
     try {
       const response = await fetchProjectByDomain(domain);
@@ -112,8 +114,8 @@ function WebsitePage() {
             />
     <meta property="og:title" content={`${project?.title}`} />
     <meta property="og:description" content={`${project?.description}`} />
-    <meta property="og:image" content={`${`http://192.168.22.25:5000/v1${project?.displayImage}`}`} />
-    <meta property="og:url" content={`${`http://192.168.22.25:3000/${domain}`}`} />
+    <meta property="og:image" content={`${`http://3.111.16.234:5000/v1${project?.displayImage}`}`} />
+    <meta property="og:url" content={`${`http://3.111.16.234:3000/${domain}`}`} />
     <meta property="og:type" content="website" />
           </Helmet>
 
