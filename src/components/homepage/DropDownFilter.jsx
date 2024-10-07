@@ -44,10 +44,10 @@ const DropDownFilter = () => {
 	};
 	const fetchLocations = async() => {
 		const response = await fetchAllLocations();
-		dispatchEvent(setLocations(response.data));
+		setLocations(response.data);
 	}
 	useEffect(()=>{
-		
+		fetchLocations();
 	},[])
 	// Close dropdown when clicked outside
 	useEffect(() => {
