@@ -41,17 +41,21 @@ const Listings = () => {
 	};
 
 	const fetchMoreData = async () => {
-		console.log("Hitting Again With");
-		dispatchEvent(
-			setOffset({
-				newOffset: limit,
-			})
-		);
-		const params = filters;
+		console.log("Hitting Again")
+  // Calculate new offset
+  const newOffset = offset + limit;
 
-		const response = await fetchAllProjects({ params });
-		dispatchEvent(setNextProjects(response.data));
-	};
+  // Set new offset in filters
+  dispatchEvent(setOffset({ newOffset }));
+
+  // Fetch next set of data
+  const params = { ...filters, offset: newOffset };
+  const response = await fetchAllProjects({ params });
+  
+  // Update the project list with new data
+  dispatchEvent(setNextProjects(response.data));
+};
+
 	const filterFetch = async () => {
 		const params = filters;
 		const response = await fetchAllProjects({ params });
@@ -73,7 +77,7 @@ const Listings = () => {
 			<InfiniteScroll
 				dataLength={totalProjects}
 				next={fetchMoreData} // Function to fetch the next batch
-				hasMore={projects?.length !== totalProjects}
+				hasMore={projects?.length < totalProjects}
 				loader={<h4>Loading...</h4>}
 				endMessage={<p style={{ textAlign: "center" }}>{totalProjects > 0 && `You’re all caught up!`}</p>}>
 		<div className='w-full flex flex-col items-start justify-center relative'>
