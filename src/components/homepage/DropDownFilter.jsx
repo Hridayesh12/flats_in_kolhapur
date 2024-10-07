@@ -4,22 +4,13 @@ import PriceFilter from "./filters/PriceFilter";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilters } from "../../store/features/filterSlice";
 import { motion } from "framer-motion";
-const locations = [
-	"Phulewadi",
-	"Sambhaji Nagar",
-	"Mangawar Peth",
-	"Tarabai Park",
-	"Unchgaon",
-];
+import { fetchAllLocations } from "../../services/filterService";
 
 const projectStatus = [
-	"Planning",
-	"Under Construction",
-	"Pre Construction",
-	"Ready For Possession",
-	"Nearing Possession"
+	"Planning","Under Construction", "Nearing Possession", "Ready For Possession"
 ];
 const DropDownFilter = () => {
+	const [locations, setLocations] = useState([]);
 	const dispatch = useDispatch();
 	const locate = useSelector((state) => state.filters.area);
 	const prStatus = useSelector((state) => state.filters.possessionStatus);
@@ -51,6 +42,13 @@ const DropDownFilter = () => {
 			})
 		);
 	};
+	const fetchLocations = async() => {
+		const response = await fetchAllLocations();
+		dispatchEvent(setLocations(response.data));
+	}
+	useEffect(()=>{
+		
+	},[])
 	// Close dropdown when clicked outside
 	useEffect(() => {
 		const handleClickOutside = (event) => {

@@ -119,7 +119,7 @@ const maxPriceMatch = input.match(/(?:max\s|maximum\s|below\s|$)([0-9]+)/i);
     } else {
       updatedFilters.maxPrice = 50000000;
     }
-
+    console.log("Hello For Navbar search", updatedFilters);
     // Apply the updated filters
     dispatch(setFilters(updatedFilters));
   };
