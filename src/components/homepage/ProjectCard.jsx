@@ -133,7 +133,7 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 		>
 			<div className='h-80 w-80'>
 				<img
-					src={`http://flatsinkolhapur.com:5000/v1${image}`}
+					src={`https://flats-in-kop-backend.onrender.com:5000/v1${image}`}
 					className='h-full w-full object-cover'
 					alt='Card'
 				/>

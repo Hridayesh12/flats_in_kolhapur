@@ -114,8 +114,8 @@ function WebsitePage() {
             />
     <meta property="og:title" content={`${project?.title}`} />
     <meta property="og:description" content={`${project?.description}`} />
-    <meta property="og:image" content={`${`http://flatsinkolhapur.com:5000/v1${project?.displayImage}`}`} />
-    <meta property="og:url" content={`${`http://flatsinkolhapur.com/${domain}`}`} />
+    <meta property="og:image" content={`${`https://flats-in-kop-backend.onrender.com:5000/v1${project?.displayImage}`}`} />
+    <meta property="og:url" content={`${`https://flats-in-kolhapur.vercel.app/${domain}`}`} />
     <meta property="og:type" content="website" />
           </Helmet>
 

@@ -30,7 +30,7 @@ const Listings = () => {
         minPrice: 100000,
         maxPrice: 50000000,
         possessionStatus: null,
-        limit: 5,
+        limit: 10,
         offset: 0
 })
     )
@@ -60,7 +60,7 @@ const Listings = () => {
 	useEffect(() => {
 		dispatchEvent(
 			setFilters({
-				limit: 5,
+				limit: 10,
 				offset: 0,
 			})
 		);
