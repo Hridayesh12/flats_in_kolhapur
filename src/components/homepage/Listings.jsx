@@ -70,18 +70,19 @@ const Listings = () => {
 		initialFetch();
 	}, []);
 	return (
-		<div className='w-full flex flex-col items-start justify-center relative'>
-			<div className='flex items-center justify-between w-full  py-2 px-4 sm:px-12 sticky z-40 top-0 bg-base-100'>
-				{/* Set a width that matches the ProjectCard */}
-				<p className='text-left w-80'>Total Properties: {totalProjects}</p>
-			</div>
-
 			<InfiniteScroll
 				dataLength={totalProjects}
 				next={fetchMoreData} // Function to fetch the next batch
 				hasMore={projects?.length !== totalProjects}
 				loader={<h4>Loading...</h4>}
 				endMessage={<p style={{ textAlign: "center" }}>{totalProjects > 0 && `You’re all caught up!`}</p>}>
+		<div className='w-full flex flex-col items-start justify-center relative'>
+			<div className='flex items-center justify-between w-full  py-2 px-4 sm:px-12 sticky z-40 top-0 bg-base-100'>
+				{/* Set a width that matches the ProjectCard */}
+				<p className='text-left w-80'>Total Properties: {totalProjects}</p>
+			</div>
+
+		
 				<div className={`flex w-screen flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
 					{projects?.map((project) => (
 						<div className=' mx-auto' key={project.projectId}>
@@ -108,8 +109,9 @@ const Listings = () => {
 						</div>
 					))}
 				</div>
-			</InfiniteScroll>
+			
 		</div>
+		</InfiniteScroll>
 	);
 };
 
