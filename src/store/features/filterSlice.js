@@ -7,7 +7,7 @@ const initialState = {
     minPrice: 100000,
     maxPrice: 50000000,
     possessionStatus: null,
-    limit: 3,
+    limit: 100,
     offset: 0
 };
 

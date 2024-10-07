@@ -173,8 +173,8 @@ const maxPriceMatch = input.match(/(?:max\s|maximum\s|below\s|$)([0-9]+)/i);
       <div className="flex items-center gap-4">
      {searchOpen ?
        <img
-       onClick={()=>{handleSearch()}}
-       src={`${assetsUrl}/assets/svgs/navbar_icons/search.svg`}
+       onClick={handleSearch}
+       src={`${assetsUrl}/assets/svgs/navbar_icons/u.svg`}
        className={`${searchOpen ? "w-9 h-14 cursor-pointer hidden sm:block rounded-r-md border-r-2 border-t-2 border-b-2":"w-9 h-full cursor-pointer hidden sm:block"}`}
        alt="Search"
      /> :
