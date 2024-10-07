@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const FavCard = ({ price, bhk, name, location,description, img, priceUnit }) => {
+ 
+  const navigate = useNavigate();
   const style = {
     backgroundImage: `url(${img})`,
     backgroundSize: 'cover', // Ensures the background image covers the element
@@ -10,9 +13,9 @@ const FavCard = ({ price, bhk, name, location,description, img, priceUnit }) => 
     width: '100%' // Adjust width as needed
   };
   return (
-       <div className="bg-base-100 shadow-xl flex border-[1px] border-base-300">
+       <div className="bg-base-100 shadow-xl flex border-[1px] border-base-300" >
       <div className="w-[20%] h-[100%] ">
-         <img src={`http://13.202.242.137:5000/v1${img}`} alt="Card" className="object-cover w-full h-full" />
+         <img src={`http://flatsinkolhapur.com:5000/v1${img}`} alt="Card" className="object-cover w-full h-full" />
       </div>
 
       <div className='flex flex-col items-start justify-between p-2 w-[42%]'>

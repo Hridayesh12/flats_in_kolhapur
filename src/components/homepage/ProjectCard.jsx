@@ -71,7 +71,7 @@ const description = desc;
 			)
 		}
 	}
-const shareUrl = `http://13.202.242.137/${domain}`;
+const shareUrl = `http://flatsinkolhapur.com/${domain}`;
     const shareMessage = `Check out this project: ${name}\nLocation: ${location}\nDescription: ${description}`;
 
     const handleWhatsAppShare = (event) => {
@@ -133,7 +133,7 @@ const shareUrl = `http://13.202.242.137/${domain}`;
 		>
 			<div className='h-80 w-80'>
 				<img
-					src={`http://13.202.242.137:5000/v1${image}`}
+					src={`http://flatsinkolhapur.com:5000/v1${image}`}
 					className='h-full w-full object-cover'
 					alt='Card'
 				/>

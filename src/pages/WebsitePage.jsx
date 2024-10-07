@@ -105,7 +105,7 @@ function WebsitePage() {
   return (
     <>
       {project ? (
-        <div className="px-4 sm:px-8 md:px-16 pb-5">
+        <div className="px-4 sm:px-8 md:px-16 pb-5 mx-auto max-w-[1500px]">
           <Helmet>
             <title>{project?.title}</title>
             <meta
@@ -114,8 +114,8 @@ function WebsitePage() {
             />
     <meta property="og:title" content={`${project?.title}`} />
     <meta property="og:description" content={`${project?.description}`} />
-    <meta property="og:image" content={`${`http://13.202.242.137:5000/v1${project?.displayImage}`}`} />
-    <meta property="og:url" content={`${`http://13.202.242.137/${domain}`}`} />
+    <meta property="og:image" content={`${`http://flatsinkolhapur.com:5000/v1${project?.displayImage}`}`} />
+    <meta property="og:url" content={`${`http://flatsinkolhapur.com/${domain}`}`} />
     <meta property="og:type" content="website" />
           </Helmet>
 

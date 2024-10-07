@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const FavoritesPage = () => {
+ 
   const [favProject, setFavProject] = useState([]);
   const navigate = useNavigate();
   const { openLogin, setIsLoggedIn, isLoggedIn } = useAuth();

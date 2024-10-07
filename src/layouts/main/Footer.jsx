@@ -7,7 +7,7 @@ import { setFilters } from '../../store/features/filterSlice';
 const areaKeywords = [
     'shivaji park', 'laxmipuri', 'dabholkar corner', 'rajarampuri', 'kasba bawada', 
     'rukmini nagar', 'ichalkaranji', 'bawada', 'gandhinagar', 'station road', 'market yard', 
-    'shahupuri', 'pratibha nagar', 'kalamba', 'nagala park', 'tarabai Park'
+    'shahupuri', 'pratibha nagar', 'kalamba', 'nagala park', 'tarabai Park', 'unchagaon', 'phulewadi','sambhaji nagar', 'managawar peth'
   ];
   
   const typeKeywords = [

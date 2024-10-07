@@ -5,18 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilters } from "../../store/features/filterSlice";
 import { motion } from "framer-motion";
 const locations = [
-	"Rajarampuri",
-	"Laxmipuri",
-	"Bindu Chowk",
+	"Phulewadi",
+	"Sambhaji Nagar",
+	"Mangawar Peth",
 	"Tarabai Park",
-	"Town Hall Garden",
-	"Bindu Chowk",
-	"Rajarampuri",
-	"Laxmipuri",
-	"Bindu Chowk",
-	"Tarabai Park",
-	"Town Hall Garden",
-	"Bindu Chowk",
+	"Unchgaon",
 ];
 
 const projectStatus = [
@@ -24,11 +17,7 @@ const projectStatus = [
 	"Under Construction",
 	"Pre Construction",
 	"Ready For Possession",
-	"Under Construction",
-	"Post Construction",
-	"Ready For Possession",
-	"Under Construction",
-	"Post Construction",
+	"Nearing Possession"
 ];
 const DropDownFilter = () => {
 	const dispatch = useDispatch();
