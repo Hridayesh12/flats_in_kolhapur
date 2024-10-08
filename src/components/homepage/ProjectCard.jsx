@@ -126,7 +126,7 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 	}, []);
 	return (
 		<motion.div
-		initial={{scale:0}} whileInView={{scale:1}} whileHover={{scale:1.2}} onTap={{scale:1.2}}
+		initial={{scale:0}} whileInView={{scale:1}} whileHover={{scale:1.05}} onTap={{scale:1.05}}
 		style={{ boxShadow: "0px 2px 5px 0px #00000040" }}
 			className='w-80 flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
 			onClick={()=>{navigate(`/${domain}`)}}
