@@ -7,9 +7,9 @@ export const fetchAllProjects = async ({ params }) => {
     const resp = await getCurrentLead();
     let newParams = params;
     if (resp?.data?._id) {
-        newParams = {...params,lead:resp.data._id};
+        newParams = { ...params, lead: resp.data._id };
     }
-    console.log("NewParam", newParams);
+    console.log("NewParam Check For Hitting Again with Offset", newParams);
     try {
         const response = await instance({
             url: `projectRouter/projects`,  // Fetches all Projects
