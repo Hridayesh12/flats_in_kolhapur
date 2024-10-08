@@ -75,12 +75,12 @@ export const getFavorites = async (projectId) => {
 export const handleDownload = async (url) => {
     console.log(url);
     try {
-        const response = await axios.get(url, {
+        const response = await axios.get(url.brochureurl, {
             responseType: 'blob', // Important for handling binary data
         });
 
         // Extract filename from the URL
-        const filename = url.split('/').pop(); // Get the last part of the URL
+        const filename = url.brochureurl.split('/').pop(); // Get the last part of the URL
 
         // Create a URL for the file
         const blob = new Blob([response.data]);
