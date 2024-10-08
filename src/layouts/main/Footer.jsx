@@ -139,7 +139,7 @@ const Footer = () => {
             <div onClick={handleSearchClick} className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                 <img
                     src={`${assetsUrl}/assets/svgs/footer_icons/search.svg`}
-                    className="w-full h-full"
+                    className="w-full h-7"
                     alt="Search"
                 />
             </div>
@@ -169,13 +169,13 @@ const Footer = () => {
                     {location.pathname.split("/").pop() === 'favorite' ? (
                         <img
                             src={`${assetsUrl}/assets/svgs/footer_icons/favF.svg`}
-                            className="w-full h-full"
+                            className="w-full h-7"
                             alt="Favorite"
                         />
                     ) : (
                         <img
                             src={`${assetsUrl}/assets/svgs/footer_icons/fav.svg`}
-                            className="w-full h-full"
+                            className="w-full h-7"
                             alt="Favorite"
                         />
                     )}
@@ -186,13 +186,13 @@ const Footer = () => {
                     {location.pathname.split("/").pop() === 'my-account' ? (
                         <img
                             src={`${assetsUrl}/assets/svgs/footer_icons/accountF.svg`}
-                            className="w-full h-full"
+                            className="w-full h-7"
                             alt="Account"
                         />
                     ) : (
                         <img
                             src={`${assetsUrl}/assets/svgs/footer_icons/account.svg`}
-                            className="w-full h-full"
+                            className="w-full h-7"
                             alt="Account"
                         />
                     )}

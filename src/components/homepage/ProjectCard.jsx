@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { assetsUrl } from '../../config/url';
 import {
@@ -36,12 +36,7 @@ const description = desc;
 	const { openLogin, isLoggedIn, setIsLoggedIn } = useAuth();
 	const dispatch = useDispatch();
 	
-	const [isNameOverflowed, setIsNameOverflowed] = useState(false);
-	const [isDescriptionOverflowed, setIsDescriptionOverflowed] = useState(false);
 	const [isShareOpen, setIsShareOpen] = useState(false); // State for controlling share popup visibility
-
-	const nameRef = useRef(null);
-	const descriptionRef = useRef(null);
 
 	const toggleSharePopup = (event) => {
 		event.stopPropagation()
@@ -104,32 +99,13 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
     };
 
 
-	useEffect(() => {
-		const checkOverflow = () => {
-			if (nameRef.current) {
-				setIsNameOverflowed(
-					nameRef.current.scrollWidth > nameRef.current.clientWidth
-				);
-			}
-			if (descriptionRef.current) {
-				setIsDescriptionOverflowed(
-					descriptionRef.current.scrollHeight >
-						descriptionRef.current.clientHeight
-				);
-			}
-		};
-		checkOverflow();
-		window.addEventListener("resize", checkOverflow);
-
-		return () => window.removeEventListener("resize", checkOverflow);
-	}, []);
 	return (
 		<motion.div whileHover={{scale:1.05}}
 		style={{ boxShadow: "0px 2px 5px 0px #00000040" }}
-			className='w-[340px] flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
+			className='w-[320px] sm:w-[340px] flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
 			onClick={()=>{navigate(`/${domain}`)}}
 		>
-			<div className='h-[340px] w-[340px]'>
+			<div className='h-[320px] sm:h-[340px] w-[320px] sm:w-[340px]'>
 				<img
 					src={`${image}`}
 					className='h-full w-full object-cover'

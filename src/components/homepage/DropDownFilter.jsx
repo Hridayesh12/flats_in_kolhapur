@@ -140,7 +140,7 @@ const DropDownFilter = () => {
 			(showLocationFilter || showPriceFilter || showPossessionFilter) ? "visible" : "hidden"
 		} // Animate to 'visible' when any filter is shown
 		exit="exit" // Animate to 'exit' when no filters are shown
-			className={`w-72 xs:w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-sm text-base-400 bg-base-100 top-[68px] border-[1px] border-base-700`}
+			className={`w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-sm text-base-400 bg-base-100 top-[68px] border-[1px] border-base-700`}
 		>
 			{/* Location Filter Dropdown */}
 			{showLocationFilter && (

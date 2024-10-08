@@ -102,7 +102,7 @@ const PriceFilter = ({setPriceFilter}) => {
 							₹
 						</p>
 						<input
-							className={`w-[66px] ${
+							className={`w-[64px] ${
 								value < maxValue ? "text-base-600" : "text-base-600"
 							}`}
 							type='text'
