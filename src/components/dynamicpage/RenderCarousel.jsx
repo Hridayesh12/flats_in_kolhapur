@@ -111,11 +111,13 @@ const RenderCarousel = ({ file }) => {
                     >
                         &#10094; {/* Left Arrow */}
                     </button>
-                    <img
-                        src={`${fileUrl}${file[currentViewerIndex]}`}
-                        className="max-w-full h-[50vh] sm:h-[70vh] rounded-lg"
+                   <div className="border-2 border-base-500 w-[100vh]">
+                     <img
+                        src={`${file[currentViewerIndex]}`}
+                        className="w-full rounded-lg"
                         alt=""
                     />
+                   </div>
                     <button
                         className="absolute right-5 text-base-100 text-2xl bg-base-600 p-1 px-3 rounded-full"
                         onClick={goToNextViewer}

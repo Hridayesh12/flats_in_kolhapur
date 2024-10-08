@@ -74,16 +74,16 @@ const DropDownFilter = () => {
 
 	return (
 		<div
-			className='text-base-1000 w-full px-8 py-4 relative flex items-center justify-center'
+			className='text-base-1000 w-full px-8 py-6 relative flex items-center justify-center cursor-pointer'
 			style={{ boxShadow: "2px 2px 4px 1px rgba(0, 0, 0, 0.25)" }}>
-			<div className='w-72 shadow-custom-shadow rounded-md py-[6px] px-5 flex items-center justify-between text-xs border-[1px] border-base-700'>
+			<div className='w-80 sm:w-96 shadow-custom-shadow rounded-md py-2 px-5 flex items-center justify-between text-xs border-[1px] border-base-700'>
 				{/* Location Button */}
 				<button
 					onClick={() => setShowLocationFilter(!showLocationFilter)}
 					className={`flex flex-col items-start gap-0 ${
 						showLocationFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[11px] sm:text-[13px] font-normal'>Location</p>
+					<p className='leading-none text-[13px] sm:text-sm font-normal'>Location</p>
 					{locate && !showLocationFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -98,7 +98,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showPriceFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[11px] sm:text-[13px] font-normal'>Price</p>
+					<p className='leading-none text-[13px] sm:text-sm font-normal'>Price</p>
 					{minimumPrice!==100000 && !showPriceFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -115,7 +115,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 mr-3 ${
 						showPossessionFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[11px] sm:text-[13px] font-normal'>Project Status</p>
+					<p className='leading-none text-[13px] sm:text-sm font-normal'>Project Status</p>
 					{prStatus && !showPossessionFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -140,7 +140,7 @@ const DropDownFilter = () => {
 			(showLocationFilter || showPriceFilter || showPossessionFilter) ? "visible" : "hidden"
 		} // Animate to 'visible' when any filter is shown
 		exit="exit" // Animate to 'exit' when no filters are shown
-			className={`w-72 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-xs text-base-400 bg-base-100 top-[53px] border-[1px] border-base-700`}
+			className={`w-72 xs:w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-sm text-base-400 bg-base-100 top-[68px] border-[1px] border-base-700`}
 		>
 			{/* Location Filter Dropdown */}
 			{showLocationFilter && (

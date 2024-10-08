@@ -23,7 +23,6 @@ const ProjectCard = ({
 	bhk,
 	location,
 	domain,
-	priceUnit,
 	projectId,
 	desc,
 	isFav
@@ -125,13 +124,12 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 		return () => window.removeEventListener("resize", checkOverflow);
 	}, []);
 	return (
-		<motion.div
-		initial={{scale:0}} whileInView={{scale:1}} whileHover={{scale:1.05}} onTap={{scale:1.05}}
+		<motion.div whileHover={{scale:1.05}}
 		style={{ boxShadow: "0px 2px 5px 0px #00000040" }}
-			className='w-80 flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
+			className='w-[340px] flex flex-col items-center justify-center bg-base-200 relative mx-auto my-5'
 			onClick={()=>{navigate(`/${domain}`)}}
 		>
-			<div className='h-80 w-80'>
+			<div className='h-[340px] w-[340px]'>
 				<img
 					src={`${image}`}
 					className='h-full w-full object-cover'
@@ -140,45 +138,29 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 			</div>
 			<div
 				style={{ boxShadow: "0px 2px 5px 0px #00000040" }}
-				className='w-full bg-base-100 flex flex-col items-center py-3'>
-				<div className='w-full flex items-start justify-around pb-[0.5]'>
+				className='w-full bg-base-100 flex flex-col items-center py-3 px-2 pl-4 gap-1'>
+				<div className='w-full flex items-start justify-start'>
 					<p
-						ref={nameRef}
-						className='text-base font-bold leading-none max-w-[40%] min-w-[40%] flex flex-wrap overflow-hidden text-ellipsis whitespace-nowrap group relative'>
+						className='text-base font-bold leading-none flex flex-wrap overflow-hidden whitespace-nowrap text-left'>
 						{name.toUpperCase()}
-						{isNameOverflowed && (
-							<span className='absolute opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-sm font-medium px-3 py-2 rounded-lg shadow-lg z-10 transition-opacity duration-300 ease-in-out transform -translate-y-2 group-hover:translate-y-0 left-1/2 -translate-x-1/2'>
-								{name.toUpperCase()}
-								<span className='absolute bg-gray-800 h-2 w-2 rotate-45 -bottom-1 left-1/2 -translate-x-1/2'></span>
-							</span>
-						)}
+						
 					</p>
 
-					<p className='text-base leading-none max-w-[40%] min-w-[40%] flex items-end flex-wrap'>
-						₹ {price} {priceUnit}<p className='text-[8px] leading-3 text-base-900'>&nbsp;onwards</p>
-					</p>
 				</div>
-				<div className='w-full flex items-start justify-around pb-[0.5]'>
-					<p className='text-base text-base-900 leading-none font-normal max-w-[40%] min-w-[40%] flex flex-wrap'>
+				<div className='w-full flex items-start justify-around '>
+					<p className='text-base text-base-900 leading-none font-normal max-w-[55%] min-w-[55%] flex flex-wrap'>
 						{location}
 					</p>
-					<p className='text-base leading-none max-w-[40%] min-w-[40%] flex items-end flex-wrap'>
-						{bhk}{" "}BHK <p className='text-[8px] leading-[11px] text-base-900'>&nbsp;posted by owner</p>
+					<p className='text-base leading-none max-w-[45%] min-w-[45%] flex items-end flex-wrap'>
+						₹ {price}<p className='text-[10px] leading-3 text-base-900'>&nbsp;onwards</p>
 					</p>
+					
 				</div>
 				<div className='w-full flex items-end justify-around'>
-					<p
-						ref={descriptionRef}
-						className='text-[10px] text-base-400 max-w-[40%] min-w-[40%] flex flex-wrap overflow-hidden text-ellipsis group relative'
-						style={{
-							display: "-webkit-box",
-							WebkitLineClamp: 2,
-							WebkitBoxOrient: "vertical",
-							overflow: "hidden",
-						}}>
-						{description}
+					<p className='text-base leading-none max-w-[50%] min-w-[55%] flex items-end flex-wrap'>
+						{bhk} <p className='text-[10px] leading-[11px] text-base-900'>&nbsp;posted by owner</p>
 					</p>
-					<div className='flex items-center gap-3 min-h-full max-w-[40%] min-w-[40%]'>
+					<div className='flex items-center gap-2 min-h-full max-w-[45%] min-w-[45%]'>
 						<span 
                         onClick={(e)=>{handleFavLogic(e,projectId)}}
                         >
@@ -186,12 +168,12 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 								<img
 								src={`${assetsUrl}/assets/svgs/project_card_icons/filled_heart.svg`}
 								alt='Heart'
-								className='w-5'
+								className='w-4'
 							/>:
 							<img
 								src={`${assetsUrl}/assets/svgs/project_card_icons/empty_heart.svg`}
 								alt='Heart'
-								className='w-5'
+								className='w-4'
 							/>
 							}
 						</span>
@@ -203,7 +185,7 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 								<img
 									src={`${assetsUrl}/assets/svgs/project_card_icons/share.svg`}
 									alt='Share'
-									className='w-[18px]'
+									className='w-[16px]'
 								/>
 							</button>
 

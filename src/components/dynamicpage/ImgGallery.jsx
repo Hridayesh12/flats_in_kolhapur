@@ -62,7 +62,7 @@ const ImgGallery = ({ imagesArray, url, title }) => {
             &#10094; {/* Left Arrow */}
           </button>
           <img
-            src={`${fileUrl}${imagesArray[currentImage]}`}
+            src={`${imagesArray[currentImage]}`}
             className="max-w-full h-[50vh] sm:h-[70vh] rounded-lg"
             alt=""
           />
