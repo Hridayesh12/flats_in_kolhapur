@@ -79,18 +79,22 @@ export const handleDownload = async (url) => {
             responseType: 'blob', // Important for handling binary data
         });
 
+        console.log("Response", response);
         // Extract filename from the URL
         const filename = url.brochureurl.split('/').pop(); // Get the last part of the URL
 
+        console.log("Filename", filename);
         // Create a URL for the file
         const blob = new Blob([response.data]);
         const downloadUrl = window.URL.createObjectURL(blob);
 
+        console.log("Blob", blob, "Download Url", downloadUrl);
         // Create a link element
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.setAttribute('download', filename); // Use the extracted filename
 
+        console.log("Link", link);
         // Append to the body and trigger the download
         document.body.appendChild(link);
         link.click();
