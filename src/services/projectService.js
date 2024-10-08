@@ -3,14 +3,7 @@ import instance from "../config/api";
 
 import { getCurrentLead } from "./authService";
 
-import cloudinary from 'cloudinary';
 
-// Configure Cloudinary with your credentials
-cloudinary.config({
-    cloud_name: 'dtzsoi5gl',
-    api_key: '871891988265224',
-    api_secret: '9-TIjs42L37diuUHqvNuN5OYUJ4',
-});
 export const fetchAllProjects = async ({ params }) => {
     const resp = await getCurrentLead();
     let newParams = params;
@@ -44,7 +37,7 @@ export const fetchProjectByDomain = async (domain) => {
 
 export const postLeadToProject = async (projectId) => {
     console.log(projectId);
-    try {true
+    try {
         const response = await instance({
             url: `projectRouter/projectLead/${projectId}`,  // Fetches Project By Id
             method: 'POST',
@@ -80,32 +73,29 @@ export const getFavorites = async (projectId) => {
     }
 };
 
-export const handleDownload = async (publicId, userId) => {
+export const handleDownload = async (url) => {
+    console.log(url);
     try {
-        // Step 2: Generate the signed URL
-        const signedUrl = cloudinary.url(publicId, {
-            sign: true,
-            type: 'upload',
-            expires_at: Math.floor(Date.now() / 1000) + 3600, // URL valid for 1 hour
-        });
-
-        // Step 3: Make a request to download the PDF
-        const response = await axios.get(signedUrl, {
+        const response = await axios.get(url.brochureurl, {
             responseType: 'blob', // Important for handling binary data
         });
 
+        console.log("Response", response);
         // Extract filename from the URL
-        const filename = publicId.split('/').pop(); // Get the last part of the public ID
+        const filename = url.brochureurl.split('/').pop(); // Get the last part of the URL
 
+        console.log("Filename", filename);
         // Create a URL for the file
         const blob = new Blob([response.data]);
         const downloadUrl = window.URL.createObjectURL(blob);
 
+        console.log("Blob", blob, "Download Url", downloadUrl);
         // Create a link element
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.setAttribute('download', filename); // Use the extracted filename
 
+        console.log("Link", link);
         // Append to the body and trigger the download
         document.body.appendChild(link);
         link.click();
@@ -114,6 +104,6 @@ export const handleDownload = async (publicId, userId) => {
         link.parentNode.removeChild(link);
         window.URL.revokeObjectURL(downloadUrl); // Clean up the URL object
     } catch (error) {
-        console.error('Error downloading the file:', error.message);
+        console.error('Error downloading the file:', error);
     }
 };
