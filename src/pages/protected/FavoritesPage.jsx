@@ -23,6 +23,7 @@ const FavoritesPage = () => {
 		else{
       setIsLoggedIn(true);
 			const getFav = await getFavorites();
+      console.log("Favorite", getFav);
       setFavProject(getFav.data);
 		}
  }
