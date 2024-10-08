@@ -42,7 +42,7 @@ const ImgGallery = ({ imagesArray, url, title }) => {
             onClick={() => openImageViewer(index)}
           >
             <img
-              src={`${fileUrl}${file}`}
+              src={`${file}`}
               alt={`File Preview ${index + 1}`}
               className="w-full h-full object-cover "
             />

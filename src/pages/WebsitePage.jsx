@@ -86,7 +86,7 @@ function WebsitePage() {
         resp2 = await postLeadToProject(project.projectId);
       }
       if (resp2.status === "success") {
-        await handleDownload({ brochureurl: `${fileUrl}${project?.brochure}` });
+        await handleDownload({ brochureurl: `${project?.brochure}` });
       }
     }
   };
@@ -114,14 +114,14 @@ function WebsitePage() {
             />
     <meta property="og:title" content={`${project?.title}`} />
     <meta property="og:description" content={`${project?.description}`} />
-    <meta property="og:image" content={`${`https://flats-in-kop-backend.vercel.app/v1${project?.displayImage}`}`} />
+    <meta property="og:image" content={`${`${project?.displayImage}`}`} />
     <meta property="og:url" content={`${`https://flats-in-kolhapur.vercel.app/${domain}`}`} />
     <meta property="og:type" content="website" />
           </Helmet>
 
           <div className="max-w-xs mx-auto mt-5 mb-8">
             <img
-              src={`${fileUrl}${project?.logo}`}
+              src={`${project?.logo}`}
               alt="Project Logo"
               className="h-auto w-full object-cover"
             />

@@ -72,7 +72,7 @@ const RenderCarousel = ({ file }) => {
         {file.map((image, index) => (
           <img
             key={index}
-            src={`${fileUrl}${image}`}
+            src={`${image}`}
             alt={`file item ${index + 1}`}
             className="object-contain cursor-pointer" // Ensure the full image is visible
             style={{

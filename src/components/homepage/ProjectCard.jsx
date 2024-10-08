@@ -133,7 +133,7 @@ const shareUrl = `http://flatsinkolhapur.com/${domain}`;
 		>
 			<div className='h-80 w-80'>
 				<img
-					src={`https://flats-in-kop-backend.vercel.app/v1${image}`}
+					src={`${image}`}
 					className='h-full w-full object-cover'
 					alt='Card'
 				/>
