@@ -44,7 +44,7 @@ export const fetchProjectByDomain = async (domain) => {
 
 export const postLeadToProject = async (projectId) => {
     console.log(projectId);
-    try {
+    try {true
         const response = await instance({
             url: `projectRouter/projectLead/${projectId}`,  // Fetches Project By Id
             method: 'POST',
