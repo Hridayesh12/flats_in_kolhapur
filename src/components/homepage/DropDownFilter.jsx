@@ -83,7 +83,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showLocationFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[11px] font-normal'>Location</p>
+					<p className='leading-none text-[11px] sm:text-[13px] font-normal'>Location</p>
 					{locate && !showLocationFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -98,7 +98,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showPriceFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[11px] font-normal'>Price</p>
+					<p className='leading-none text-[11px] sm:text-[13px] font-normal'>Price</p>
 					{minimumPrice!==100000 && !showPriceFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -115,7 +115,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 mr-3 ${
 						showPossessionFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[11px] font-normal'>Project Status</p>
+					<p className='leading-none text-[11px] sm:text-[13px] font-normal'>Project Status</p>
 					{prStatus && !showPossessionFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
