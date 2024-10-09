@@ -33,7 +33,7 @@ const FavoritesPage = () => {
 
  if(!isLoggedIn) return navigate("/");
   return (
-    <div className="container  px-2 py-4 mx-auto h-full overflow-auto">
+    <div className="container  px-2 py-4 mx-auto h-fit overflow-auto">
       {/* Favorite Count Section */}
       <div className="bg-base-600 text-base-100 p-4 flex justify-between items-center">
       <span className='text-lg font-bold'>Favorite</span>

@@ -19,7 +19,7 @@ const Layout = () => {
       const footerHeight = footerRef.current ? footerRef.current.offsetHeight : 0;
       const remainingHeight = window.innerHeight - navbarHeight - footerHeight;
 
-      setOutletHeight(remainingHeight > 0 ? `${remainingHeight}px` : '0px');
+      setOutletHeight(remainingHeight > 0 ? `${remainingHeight - 80}px` : '0px');
     };
 
     window.addEventListener('resize', handleResize);

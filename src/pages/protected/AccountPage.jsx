@@ -26,7 +26,7 @@ const AccountPage = () => {
 
 	if (!isLoggedIn) return navigate("/");
 	return (
-		<div className='px-10 pt-12 flex flex-col items-start gap-8 h-full max-w-[320px] mx-auto'>
+		<div className='px-10 pt-12 flex flex-col items-start gap-8 h-fit max-w-[320px] mx-auto'>
 				<div className="flex flex-col gap-4">
         <img
 					src={`${assetsUrl}/assets/svgs/monogram.svg`}
