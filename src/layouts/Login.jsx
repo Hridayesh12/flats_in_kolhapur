@@ -29,6 +29,7 @@ const Login = () => {
         setStep(1);
         setPhone('');
         setName('');
+        window.location.reload();
         // You can change this as per logic if lead exists or continue with OTP flow
       }
     } catch (err) {
@@ -52,6 +53,7 @@ const Login = () => {
         setStep(1);      
         setPhone('');
         setName('');
+        window.location.reload();
       } else {
         setError('Invalid OTP. Please try again.');
       }

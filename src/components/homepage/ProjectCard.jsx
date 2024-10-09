@@ -51,7 +51,8 @@ const ProjectCard = ({
       openLogin();
     } else {
       const resp = await postPutFavoriteProject(projectId);
-      if (resp.message === "Added To Favorites successfully") {
+      console.log("Resp",resp);
+      if (resp.message === "Added To Favorites") {
         dispatch(setLikeProject({ projectId: projectId }));
         toast.info(resp.message, {
           position: "top-right",
@@ -64,7 +65,7 @@ const ProjectCard = ({
           theme: "light",
           transition: Bounce,
         });
-      } else if (resp.message === "Removed From Favorites successfully") {
+      } else if (resp.message === "Removed From Favorites") {
         dispatch(setLikeProject({ projectId: projectId }));
         toast.error(resp.message, {
           position: "top-right",

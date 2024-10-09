@@ -85,13 +85,13 @@ const RenderCarousel = ({ file }) => {
       </div>
       <button
         onClick={goToPrev}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-base-600 text-base-100 p-2 rounded-full"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-base-600 text-base-100 p-2 px-3.5 text-2xl rounded-full"
       >
         &#10094;
       </button>
       <button
         onClick={goToNext}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-base-600 text-base-100 p-2 rounded-full"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-base-600 text-base-100 p-2 px-3.5 text-2xl rounded-full"
       >
         &#10095;
       </button>
@@ -99,13 +99,13 @@ const RenderCarousel = ({ file }) => {
     {isViewerOpen && (
                 <div className="fixed inset-0 bg-base-600 bg-opacity-75 flex items-center justify-center z-50">
                     <span
-                        className="absolute top-5 right-5 text-white cursor-pointer text-base-100 bg-base-600 p-1 px-3 rounded-full"
+                        className="absolute top-5 right-5 text-white cursor-pointer text-base-100 bg-base-600 p-1 px-3.5 text-4xl rounded-full"
                         onClick={closeImageViewer}
                     >
                         &times;
                     </span>
                     <button
-                        className="absolute left-5 text-base-100 text-2xl bg-base-600 p-1 px-3 rounded-full"
+                        className="absolute left-5 text-base-100 bg-base-600 p-2 px-3.5 text-2xl rounded-full"
                         onClick={goToPrevViewer}
                         disabled={file.length <= 1}
                     >
@@ -119,7 +119,7 @@ const RenderCarousel = ({ file }) => {
                     />
                    </div>
                     <button
-                        className="absolute right-5 text-base-100 text-2xl bg-base-600 p-1 px-3 rounded-full"
+                        className="absolute right-5 text-base-100 text-2xl bg-base-600 p-2 px-3.5 rounded-full"
                         onClick={goToNextViewer}
                         disabled={file.length <= 1}
                     >

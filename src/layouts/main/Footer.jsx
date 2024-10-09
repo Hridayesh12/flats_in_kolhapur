@@ -168,13 +168,13 @@ const Footer = () => {
                 <Link to="/favorite" className={`${isSearchVisible ? 'hidden' : 'flex'}`}>
                     {location.pathname.split("/").pop() === 'favorite' ? (
                         <img
-                            src={`${assetsUrl}/assets/svgs/footer_icons/favF.svg`}
+                            src={`${assetsUrl}/assets/svgs/footer_icons/fav.svg`}
                             className="w-full h-7"
                             alt="Favorite"
                         />
                     ) : (
                         <img
-                            src={`${assetsUrl}/assets/svgs/footer_icons/fav.svg`}
+                            src={`${assetsUrl}/assets/svgs/footer_icons/favF.svg`}
                             className="w-full h-7"
                             alt="Favorite"
                         />
