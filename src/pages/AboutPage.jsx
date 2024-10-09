@@ -45,7 +45,7 @@ const AboutPage = () => {
 					here to make your dream of owning a home a reality.
 				</p>
 			</div>
-			<div className='w-full h-full bg-[rgba(0,0,0,0.7)]'>
+			<div className='w-full h-fit bg-[rgba(0,0,0,0.7)]'>
 				<ContactUs />
 			</div>
 		</div>

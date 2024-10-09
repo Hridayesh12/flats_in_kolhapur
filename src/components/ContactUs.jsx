@@ -57,14 +57,16 @@ const ContactUs = () => {
 			<div className='w-full h-full sm:hidden py-2 flex justify-between items-end'>
 				<div className="flex flex-col">
 				<p className='text-[15px] text-base-300 font-bold '>Contact Us</p>
-				<p className='text-[15px] text-base-300'>+91 99992 25254</p>
+				<p className='text-[15px] text-base-300'> 
+					<a href="tel:+91999225254">+91 99992 25254</a>
+				</p>
 				<div className='flex justify-between items-start '>
 					<div className='flex-1 pr-4'>
 						<p className='text-base-300 text-[11px] font-normal leading-[14.4px] text-left'>
 							9:30 AM to 6:30 PM (Mon-Sun)
 						</p>
 						<p className='text-base-300 text-[13px] font-normal leading-[18px] text-left pt-1'>
-							flatsinkolhapur@gmail.com
+						<a href="mailto:flatsinkolhapur@gmail.com">flatsinkolhapur@gmail.com</a>
 						</p>
 					</div>
 				</div>
