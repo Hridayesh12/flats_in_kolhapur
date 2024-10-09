@@ -21,19 +21,17 @@ const Login = () => {
     }
     try {
       const response = await loginAndOtpRoutes({ phone, name, otp });
-      console.log("OTP Response",response);
       if (response.message === 'OTP Sent') {
-        console.log('OTP sent to:', phone);
         setError('');
         setStep(2); // Proceed to OTP input step
       } else {
-        console.log('Lead exists, logging in', response.data)
         setIsLoggedIn(true);closeLogin();
         setStep(1);
+        setPhone('');
+        setName('');
         // You can change this as per logic if lead exists or continue with OTP flow
       }
     } catch (err) {
-      console.error(err);
       setError('An error occurred while sending OTP or logging in.');
     }
   };
@@ -46,20 +44,18 @@ const Login = () => {
       setError('Please enter the OTP.');
       return;
     }
-    console.log(phone, otp, name);
     try {
       const response = await loginAndOtpRoutes({ phone, name, otp });
-      console.log(response);
       if (response.status < 250 || response.status === 'success') {
-        console.log('Lead exists, logging in', response.data);
         setIsLoggedIn(true);
         closeLogin();
-        setStep(1);
+        setStep(1);      
+        setPhone('');
+        setName('');
       } else {
         setError('Invalid OTP. Please try again.');
       }
     } catch (err) {
-      console.error(err);
       setError('An error occurred during OTP verification.');
     }
   };
@@ -67,6 +63,7 @@ const Login = () => {
   const handleChangeNumber = (event) => {
     event.stopPropagation(); // Prevent event bubbling
     setStep(1);
+    setPhone('');
     setOtp('');
     setError('');
   };

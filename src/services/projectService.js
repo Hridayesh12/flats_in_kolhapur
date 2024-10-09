@@ -49,7 +49,6 @@ export const postLeadToProject = async (projectId) => {
 };
 
 export const postPutFavoriteProject = async (projectId) => {
-    console.log(projectId);
     try {
         const response = await instance({
             url: `projectRouter/favorites/${projectId}`,  // Fetches Project By Id

@@ -9,6 +9,8 @@ import NavBar from "./layouts/main/NavBar";
 import AboutPage from "./pages/AboutPage";
 import Login from "./layouts/Login";
 import Loader from "./components/Loader"; // Import the Loader component
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const WebsitePage = lazy(() => import("./pages/WebsitePage"));
 
@@ -28,6 +30,7 @@ const App = () => {
 
   return (
     <AuthProvider>
+      <ToastContainer />
       <Provider store={store}>
         <BrowserRouter>
           <Suspense fallback={<Loader />}> {/* Use loader for Suspense fallback */}
