@@ -12,6 +12,7 @@ import { assetsUrl, fileUrl } from "../config/url";
 import RenderCarousel from "../components/dynamicpage/RenderCarousel";
 import ImgGallery from "../components/dynamicpage/ImgGallery";
 import ContactUs from "../components/ContactUs";
+import { toast } from "react-toastify";
 
 function WebsitePage() {
 	const location = useLocation();
@@ -20,6 +21,7 @@ function WebsitePage() {
 	const { openLogin, loginOpen, closeLogin } = useAuth();
 
 	const fetchProject = async (domain) => {
+    const [downloadState, setDownloadState] = useState(false);
 		try {
 			const response = await fetchProjectByDomain(domain);
 			console.log(response);
@@ -72,8 +74,10 @@ function WebsitePage() {
 	//Handle Download Brochure Logic -
 
 	const handleDownloadBrochure = async () => {
+    setDownloadState(true);
 		const resp = await getCurrentLead();
 		console.log("Resp", resp);
+
 		if (resp.status > 250) {
 			console.log("Working");
 			openLogin();
@@ -86,6 +90,8 @@ function WebsitePage() {
 			}
 			if (resp2.status === "success") {
 				await handleDownload({ brochureurl: `${project?.brochure}` });
+        toast('Pdf Download Successful');
+        setDownloadState(false);
 			}
 		}
 	};
@@ -219,13 +225,19 @@ function WebsitePage() {
 						</div>
 					</div>
 
-					<button
-						onClick={() => {
-							handleDownloadBrochure();
-						}}
-						className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
-						Download
-					</button>
+					{downloadState ? 
+          <button
+         disabled
+          className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
+          Download
+        </button> :
+        <button
+        onClick={() => {
+          handleDownloadBrochure();
+        }}
+        className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
+        Download
+      </button>}
 
 					<div className='my-2 grid grid-cols-1 md:grid-cols-3 gap-2'>
 						<div className='md:col-span-2'>
@@ -245,13 +257,19 @@ function WebsitePage() {
 						</div>
 					</div>
 
-					<button
-						onClick={() => {
-							handleDownloadBrochure();
-						}}
-						className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
-						Download
-					</button>
+          {downloadState ? 
+          <button
+         disabled
+          className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
+          Download
+        </button> :
+        <button
+        onClick={() => {
+          handleDownloadBrochure();
+        }}
+        className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
+        Download
+      </button>}
 
 
           <h2 className='text-2xl sm:text-4xl my-6'>Specifications</h2>
