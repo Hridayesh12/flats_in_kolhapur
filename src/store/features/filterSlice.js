@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    type: 'flat',
+    type: null,
     config: null,
     area: null,
     minPrice: 100000,

@@ -81,13 +81,13 @@ const ConfigFilters = () => {
 					}} // Assigning delay based on index
 				>
 					{activeConfig && activeConfig.toUpperCase() === config ? (
-						<span className='px-2 py-0.5 text-[11px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 bg-base-400 text-white'
+						<span className='px-2 py-0.5 text-[13px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 bg-base-400 text-white'
 						onClick={() => handleConfigChange('deselect')}
 						>
 							{config}
 						</span>
 					) : (
-						<span className='px-2 py-0.5 text-[11px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 '
+						<span className='px-2 py-0.5 text-[13px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 '
 						onClick={() => handleConfigChange(config)}
 						>
 							{config}
