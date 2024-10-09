@@ -75,7 +75,7 @@ function WebsitePage() {
 	//Handle Download Brochure Logic -
 
 	const handleDownloadBrochure = async () => {
-    setDownloadState(true);
+    
 		const resp = await getCurrentLead();
 		// console.log("Resp", resp);
 
@@ -90,6 +90,7 @@ function WebsitePage() {
 				resp2 = await postLeadToProject(project.projectId);
 			}
 			if (resp2.status === "success") {
+				setDownloadState(true);
 				await handleDownload({ brochureurl: `${project?.brochure}` });
         toast('Pdf Download Successful');
         setDownloadState(false);
