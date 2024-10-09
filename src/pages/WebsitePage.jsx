@@ -242,7 +242,7 @@ function WebsitePage() {
       </button>}
 
 					<div className='my-2 grid grid-cols-1 md:grid-cols-3 gap-2'>
-						<div className='md:col-span-2'>
+					setDownloadState(true);		<div className='md:col-span-2'>
 							<h2 className='text-2xl sm:text-4xl my-4'>Floor Plan</h2>
 							{project?.floorPlan.length > 0 && (
 								<div className='mt-2'>
@@ -344,8 +344,9 @@ function WebsitePage() {
 						</div>
 					</div>
 
-
-        <ContactUs />
+					<div className='w-full h-full bg-base-600'>
+				<ContactUs />
+			</div>
 				</div>
 			) : (
 				""
