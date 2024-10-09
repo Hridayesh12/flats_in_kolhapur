@@ -86,60 +86,64 @@ const Listings = () => {
 			<div
 				className={`flex w-screen flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
 			
-								{projects?.map((project) => (
-									<div className=' mx-auto' key={project?.projectId}>
-										<ProjectCard
-											key={project?._id}
-											image={project?.displayImage}
-											name={project?.title}
-											builder={project?.subtitle}
-											price={(() => {
-												if (project?.configurations.length > 0) {
-													const price = project.configurations[0].price;
+								{projects?.length > 0 && projects ? 
+							<>
+							{projects?.map((project) => (
+								<div className=' mx-auto' key={project?.projectId}>
+									<ProjectCard
+										key={project?._id}
+										image={project?.displayImage}
+										name={project?.title}
+										builder={project?.subtitle}
+										price={(() => {
+											if (project?.configurations.length > 0) {
+												const price = project.configurations[0].price;
 
-													if (price < 1) {
-														// Convert price less than 1 to Lakh (e.g., 0.123 becomes 12.3 Lakh)
-														return `${(price * 100).toFixed(1)} Lakh`;
-													} else {
-														// Convert price greater than or equal to 1 to Cr (e.g., 1.234 becomes 1.2 Cr)
-														return `${price.toFixed(1)} Cr`;
-													}
-												}
-												return null; // Return null if no configurations exist
-											})()}
-											bhk={(() => {
-												const bhkConfigurations = project?.configurations
-													.map((item) => item.config.match(/\d+/)) // Extract numbers
-													.filter((config) => config) // Filter valid numbers
-													.map(Number) // Convert to numbers
-													.sort((a, b) => a - b); // Sort the configurations in ascending order
-
-												if (bhkConfigurations.length === 1) {
-													// Single configuration
-													return `${bhkConfigurations[0]} BHK`;
-												} else if (
-													bhkConfigurations.length > 1 &&
-													bhkConfigurations[bhkConfigurations.length - 1] -
-														bhkConfigurations[0] ===
-														bhkConfigurations.length - 1
-												) {
-													// Continuous range of configurations
-													return `${bhkConfigurations[0]} - ${
-														bhkConfigurations[bhkConfigurations.length - 1]
-													} BHK`;
+												if (price < 1) {
+													// Convert price less than 1 to Lakh (e.g., 0.123 becomes 12.3 Lakh)
+													return `${(price * 100).toFixed(1)} Lakh`;
 												} else {
-													// Multiple non-continuous configurations
-													return bhkConfigurations.join(", ") + " BHK";
+													// Convert price greater than or equal to 1 to Cr (e.g., 1.234 becomes 1.2 Cr)
+													return `${price.toFixed(1)} Cr`;
 												}
-											})()}
-											location={project?.location.area}
-											domain={project?.domain}
-											desc={project?.description}
-											projectId={project?._id}
-											isFav={project?.isFav}
-										/>
-									</div>
-								))}
+											}
+											return null; // Return null if no configurations exist
+										})()}
+										bhk={(() => {
+											const bhkConfigurations = project?.configurations
+												.map((item) => item.config.match(/\d+/)) // Extract numbers
+												.filter((config) => config) // Filter valid numbers
+												.map(Number) // Convert to numbers
+												.sort((a, b) => a - b); // Sort the configurations in ascending order
+
+											if (bhkConfigurations.length === 1) {
+												// Single configuration
+												return `${bhkConfigurations[0]} BHK`;
+											} else if (
+												bhkConfigurations.length > 1 &&
+												bhkConfigurations[bhkConfigurations.length - 1] -
+													bhkConfigurations[0] ===
+													bhkConfigurations.length - 1
+											) {
+												// Continuous range of configurations
+												return `${bhkConfigurations[0]} - ${
+													bhkConfigurations[bhkConfigurations.length - 1]
+												} BHK`;
+											} else {
+												// Multiple non-continuous configurations
+												return bhkConfigurations.join(", ") + " BHK";
+											}
+										})()}
+										location={project?.location.area}
+										domain={project?.domain}
+										desc={project?.description}
+										projectId={project?._id}
+										isFav={project?.isFav}
+									/>
+								</div>
+							))}
+							</> :<div className="mx-auto  my-2 text-xl">No Projects Found In This Category</div>
+							}
 							
 			</div>
 		</div>

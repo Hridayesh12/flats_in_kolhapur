@@ -7,7 +7,10 @@ import { motion } from "framer-motion";
 import { fetchAllLocations } from "../../services/filterService";
 
 const projectStatus = [
-	"Planning","Under Construction", "Nearing Possession", "Ready For Possession"
+	"Planning",
+	"Under Construction",
+	"Nearing Possession",
+	"Ready For Possession",
 ];
 const DropDownFilter = () => {
 	const [locations, setLocations] = useState([]);
@@ -29,6 +32,7 @@ const DropDownFilter = () => {
 		exit: { scale: 0 },
 	};
 	const handleLocationChange = (selectedArea) => {
+		console.log("SelectedArea", selectedArea);
 		dispatch(
 			setFilters({
 				area: selectedArea,
@@ -36,19 +40,20 @@ const DropDownFilter = () => {
 		);
 	};
 	const handleStatusChange = (selectedStatus) => {
+		console.log("SelectedStatus",selectedStatus)
 		dispatch(
 			setFilters({
 				possessionStatus: selectedStatus,
 			})
 		);
 	};
-	const fetchLocations = async() => {
+	const fetchLocations = async () => {
 		const response = await fetchAllLocations();
 		setLocations(response.data);
-	}
-	useEffect(()=>{
+	};
+	useEffect(() => {
 		fetchLocations();
-	},[])
+	}, []);
 	// Close dropdown when clicked outside
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -83,11 +88,15 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showLocationFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>Location</p>
+					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>
+						Location
+					</p>
 					{locate && !showLocationFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
-							className='leading-none text-[11px] font-normal'>{locate}</p>
+							className='leading-none text-[11px] font-normal'>
+							{locate}
+						</p>
 					)}
 				</button>
 				<div className='h-full border-[0.5px] border-base-700 min-h-4'></div>
@@ -98,8 +107,10 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showPriceFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>Price</p>
-					{minimumPrice!==100000 && !showPriceFilter && (
+					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>
+						Price
+					</p>
+					{minimumPrice !== 100000 && !showPriceFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
 							className='leading-none text-[11px] font-normal'>
@@ -115,7 +126,9 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 mr-3 ${
 						showPossessionFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>Project Status</p>
+					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>
+						Project Status
+					</p>
 					{prStatus && !showPossessionFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -134,35 +147,42 @@ const DropDownFilter = () => {
 			</div>
 
 			<motion.div
-		variants={containerVariants}
-		initial="hidden"  // Initial state of the animation
-		animate={
-			(showLocationFilter || showPriceFilter || showPossessionFilter) ? "visible" : "hidden"
-		} // Animate to 'visible' when any filter is shown
-		exit="exit" // Animate to 'exit' when no filters are shown
-			className={`w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-[16px] text-base-400 bg-base-100 top-[72px] border-[1px] border-base-700`}
-		>
-			{/* Location Filter Dropdown */}
-			{showLocationFilter && (
-				<motion.div
-					ref={locationRef}
-					initial={{ opacity: 0, y: 10 }}
-					animate={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: 10 }} // Exit animation
-					transition={{ duration: 0.2 }} // Control the duration of animation
-					className="w-full h-full flex flex-col items-center top-14 rounded-md px-3 py-1 bg-white z-10"
-				>
-					<div className="flex flex-row w-full h-24 rounded-md pl-1 py-1">
-						{/* First List (Vertical List) */}
-						<ul className="grid grid-cols-2 gap-1 items-start w-full h-full overflow-y-auto">
-							{locations.map((area, index) => (
-								<li
-									key={index}
-									className={`${
-										locate === area
-											? "bg-base-600 text-base-100 w-fit rounded-md"
-											: "text-base-600"
-									} p-1 cursor-pointer`}
+				variants={containerVariants}
+				initial='hidden' // Initial state of the animation
+				animate={
+					showLocationFilter || showPriceFilter || showPossessionFilter
+						? "visible"
+						: "hidden"
+				} // Animate to 'visible' when any filter is shown
+				exit='exit' // Animate to 'exit' when no filters are shown
+				className={`w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-[16px] text-base-400 bg-base-100 top-[72px] border-[1px] border-base-700`}>
+				{/* Location Filter Dropdown */}
+				{showLocationFilter && (
+					<motion.div
+						ref={locationRef}
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: 10 }} // Exit animation
+						transition={{ duration: 0.2 }} // Control the duration of animation
+						className='w-full h-full flex flex-col items-center top-14 rounded-md px-3 py-1 bg-white z-10'>
+						<div className='flex flex-row w-full h-24 rounded-md pl-1 py-1'>
+							{/* First List (Vertical List) */}
+							<ul className='grid grid-cols-2 gap-1 items-start w-full h-full overflow-y-auto'>
+								{locations.map((area, index) => (
+									<div key={index}>
+										{locate === area ? (
+											<li
+												
+												className={`bg-base-600 text-base-100 w-fit rounded-md p-1 cursor-pointer`}
+												onClick={() => {
+													handleLocationChange('deselect');
+													setShowLocationFilter(false);
+												}}>
+												{area}
+											</li>
+										) : (
+											<li
+									className={`text-base-600 p-1 cursor-pointer`}
 									onClick={() => {
 										handleLocationChange(area);
 										setShowLocationFilter(false);
@@ -170,60 +190,68 @@ const DropDownFilter = () => {
 								>
 									{area}
 								</li>
-							))}
-						</ul>
-					</div>
-				</motion.div>
-			)}
+										)}
+									</div>
+								))}
+							</ul>
+						</div>
+					</motion.div>
+				)}
 
-			{/* Price Filter Dropdown */}
-			{showPriceFilter && (
-				<motion.div
-					ref={priceRef}
-					initial={{ opacity: 0, y: 10 }}
-					animate={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: 10 }} // Exit animation
-					transition={{ duration: 0.2 }} // Control the duration of animation
-					className="relative w-full h-full flex flex-col items-center  rounded-md px-3 pt-2 pb-1 bg-white z-10"
-				>
-					<PriceFilter setPriceFilter={setShowPriceFilter} />
-				</motion.div>
-			)}
+				{/* Price Filter Dropdown */}
+				{showPriceFilter && (
+					<motion.div
+						ref={priceRef}
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: 10 }} // Exit animation
+						transition={{ duration: 0.2 }} // Control the duration of animation
+						className='relative w-full h-full flex flex-col items-center  rounded-md px-3 pt-2 pb-1 bg-white z-10'>
+						<PriceFilter setPriceFilter={setShowPriceFilter} />
+					</motion.div>
+				)}
 
-			{/* Possession Status Filter Dropdown */}
-			{showPossessionFilter && (
-				<motion.div
-					ref={possessionRef}
-					initial={{ opacity: 0, y: 10 }}
-					animate={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: 10 }} // Exit animation
-					transition={{ duration: 0.2 }} // Control the duration of animation
-					className="w-full h-full flex flex-col items-center rounded-md px-3 py-1 bg-white z-10"
-				>
-					<div className="flex flex-row w-full h-24 rounded-md pl-1 py-1">
-						{/* First List (Vertical List) */}
-						<ul className="grid grid-cols-2 gap-1 items-start w-full h-full overflow-y-auto">
-							{projectStatus.map((status, index) => (
-								<li
+				{/* Possession Status Filter Dropdown */}
+				{showPossessionFilter && (
+					<motion.div
+						ref={possessionRef}
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: 10 }} // Exit animation
+						transition={{ duration: 0.2 }} // Control the duration of animation
+						className='w-full h-full flex flex-col items-center rounded-md px-3 py-1 bg-white z-10'>
+						<div className='flex flex-row w-full h-24 rounded-md pl-1 py-1'>
+							{/* First List (Vertical List) */}
+							<ul className='grid grid-cols-2 gap-1 items-start w-full h-full overflow-y-auto'>
+								{projectStatus.map((status, index) => (
+									<div key={index}>
+										{prStatus === status ? <li
+										key={index}
+										className={`bg-base-600 text-base-100 w-fit rounded-md p-1 cursor-pointer`}
+										onClick={() => {
+											handleStatusChange('deselect');
+											setShowPossessionFilter(false);
+										}}>
+										{status}
+									</li> : 
+									<li
 									key={index}
-									className={`${
-										prStatus === status
-											? "bg-base-600 text-base-100 w-fit rounded-md"
-											: "text-base-600"
-									} p-1 cursor-pointer`}
+									className={`text-base-600 p-1 cursor-pointer`}
 									onClick={() => {
 										handleStatusChange(status);
 										setShowPossessionFilter(false);
-									}}
-								>
+									}}>
 									{status}
 								</li>
-							))}
-						</ul>
-					</div>
-				</motion.div>
-			)}
-		</motion.div>
+									}
+									</div>
+									
+								))}
+							</ul>
+						</div>
+					</motion.div>
+				)}
+			</motion.div>
 		</div>
 	);
 };

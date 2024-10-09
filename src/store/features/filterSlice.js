@@ -20,11 +20,17 @@ const filterSlice = createSlice({
             if (payload.type) {
                 state.type = payload.type
             }
-            if (payload.config) {
+            if (payload.config && payload.config !== 'deselect') {
                 state.config = payload.config
             }
-            if (payload.area) {
+            if (payload.config === 'deselect') {
+                state.config = null
+            }
+            if (payload.area && payload.area !== 'deselect') {
                 state.area = payload.area
+            }
+            if (payload.area === 'deselect') {
+                state.area = null
             }
             if (payload.minPrice) {
                 state.minPrice = payload.minPrice
@@ -32,8 +38,11 @@ const filterSlice = createSlice({
             if (payload.maxPrice) {
                 state.maxPrice = payload.maxPrice
             }
-            if (payload.possessionStatus) {
+            if (payload.possessionStatus && payload.possessionStatus !== 'deselect') {
                 state.possessionStatus = payload.possessionStatus
+            }
+            if (payload.possessionStatus === 'deselect') {
+                state.possessionStatus = null
             }
             state.offset = 0;
         },
