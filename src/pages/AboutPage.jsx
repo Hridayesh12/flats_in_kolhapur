@@ -5,7 +5,7 @@ import ContactUs from '../components/ContactUs';
 const AboutPage = () => {
   return (
 		<div
-			className='bg-clip  text bg-center w-full h-full overflow-auto flex flex-col justify-between'
+			className='bg-clip  text bg-center w-full h-screen overflow-auto flex flex-col justify-between'
 			style={{
 				backgroundImage:
 					"url('/assets/images/aboutpage/bg.jpg')",

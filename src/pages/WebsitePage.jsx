@@ -344,7 +344,7 @@ function WebsitePage() {
 						</div>
 					</div>
 
-					<div className='w-full h-full bg-base-600'>
+					<div className='w-full h-full bg-base-600 mt-3'>
 				<ContactUs />
 			</div>
 				</div>
