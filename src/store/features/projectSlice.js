@@ -11,7 +11,7 @@ const projectSlice = createSlice({
     initialState,
     reducers: {
         setProjects: (state, { payload }) => {
-            console.log("Payload Of Projects", payload);
+            // console.log("Payload Of Projects", payload);
             state.projects = payload.projects;
             state.totalProjects = payload.totalProjects;
             state.hasMore = payload.hasMore;
@@ -32,7 +32,7 @@ const projectSlice = createSlice({
             const projectIndex = state.projects.findIndex(
                 (project) => project._id === payload.projectId
             );
-            
+
             if (projectIndex !== -1) {
                 // Toggle the isFav value
                 state.projects[projectIndex].isFav = !state.projects[projectIndex].isFav;

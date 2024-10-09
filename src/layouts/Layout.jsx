@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import NavBar from './main/NavBar';
 import Footer from './main/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 const Layout = () => {
   const [outletHeight, setOutletHeight] = useState('auto');
+  const location = useLocation();
   const footerRef = useRef(null);
   const navbarRef = useRef(null);
 
@@ -31,9 +32,14 @@ const Layout = () => {
 
   return (
     <div className='flex flex-col items-center max-w-[2000px] mx-auto' style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
-      <div ref={navbarRef} className='w-full'>
-        <NavBar />
-      </div>
+      {location.pathname.split("/")[location.pathname.split("/").length - 1] !== 'my-account' &&
+      <div ref={navbarRef} className='w-full block sm:hidden'>
+      <NavBar />
+    </div>
+      }
+          <div ref={navbarRef} className='hidden sm:block w-full'>
+      <NavBar />
+    </div>
       <div
         className='flex-grow w-full'
         style={{ height: outletHeight }}

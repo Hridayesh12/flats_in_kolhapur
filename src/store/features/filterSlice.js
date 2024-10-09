@@ -16,7 +16,7 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         setFilters: (state, { payload }) => {
-            console.log("New Payload", payload);
+            // console.log("New Payload", payload);
             if (payload.type) {
                 state.type = payload.type
             }

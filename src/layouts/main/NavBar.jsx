@@ -79,6 +79,7 @@ const NavBar = () => {
   };
 
   const handleSearchInput = (input) => {
+    console.log("Going");
     const lowerInput = input.toLowerCase();
     const updatedFilters = { ...filters };
 
@@ -119,12 +120,13 @@ const maxPriceMatch = input.match(/(?:max\s|maximum\s|below\s|$)([0-9]+)/i);
     } else {
       updatedFilters.maxPrice = 50000000;
     }
-    console.log("Hello For Navbar search", updatedFilters);
+    // console.log("Hello For Navbar search", updatedFilters);
     // Apply the updated filters
     dispatch(setFilters(updatedFilters));
   };
   
   const handleSearch = () => {
+    console.log("did Handle Search Hiut");
     // Reset filters before every search
     dispatch(
         setFilters({
@@ -171,20 +173,24 @@ const maxPriceMatch = input.match(/(?:max\s|maximum\s|below\s|$)([0-9]+)/i);
         />
       )}
       <div className="flex items-center gap-4">
-     {searchOpen ?
-       <img
-       onClick={handleSearch}
-       src={`${assetsUrl}/assets/svgs/navbar_icons/u.svg`}
-       className={`${searchOpen ? "w-9 h-14 cursor-pointer hidden sm:block rounded-r-md border-r-2 border-t-2 border-b-2":"w-9 h-full cursor-pointer hidden sm:block"}`}
-       alt="Search"
-     /> :
-     <img
-     onClick={toggleSearch}
-     src={`${assetsUrl}/assets/svgs/navbar_icons/search.svg`}
-     className={`${searchOpen ? "w-9 h-14 cursor-pointer hidden sm:block rounded-r-md border-r-2 border-t-2 border-b-2":"w-9 h-full cursor-pointer hidden sm:block"}`}
-     alt="Search"
-   /> 
-    }
+     {searchOpen &&
+      <div onClick={()=>{handleSearch();}} className="cursor-pointer">
+      <img
+      
+      src={`${assetsUrl}/assets/svgs/navbar_icons/search.svg`}
+      className={"w-9 h-14 cursor-pointer hidden sm:block rounded-r-md border-r-2 border-t-2 border-b-2"}
+      alt="Searching..."
+    /> 
+      </div>
+  }
+  {!searchOpen &&
+   <img
+   onClick={()=>{toggleSearch()}}
+   src={`${assetsUrl}/assets/svgs/navbar_icons/search.svg`}
+   className={`w-9 h-full cursor-pointer hidden sm:block ${searchOpen && 'hidden'}`}
+   alt="Search"
+ /> 
+  }
         <Link to="/favorite">
           <img
             src={`${assetsUrl}/assets/svgs/navbar_icons/favorite.svg`}

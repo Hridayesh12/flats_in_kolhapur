@@ -51,7 +51,7 @@ const ProjectCard = ({
       openLogin();
     } else {
       const resp = await postPutFavoriteProject(projectId);
-      console.log("Resp",resp);
+      // console.log("Resp",resp);
       if (resp.message === "Added To Favorites") {
         dispatch(setLikeProject({ projectId: projectId }));
         toast.info(resp.message, {
@@ -218,7 +218,7 @@ const ProjectCard = ({
                     stiffness: 300, // Higher stiffness makes it faster and bouncier
                     damping: 20, // Damping controls how oscillations decay; lower = more bounces
                   }}
-                  className="absolute -top-12 -left-14 transform -translate-x-1/2 flex justify-center items-center rounded-full p-2"
+                  className="absolute -top-14 -left-14 transform -translate-x-1/2 flex justify-center items-center rounded-full p-2"
                   style={{
                     background: "radial-gradient(circle, gray,white, white)",
                     backdropFilter: "blur(2.5px)",

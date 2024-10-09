@@ -65,50 +65,27 @@ const PriceFilter = ({setPriceFilter}) => {
 			<div className='flex items-center justify-between px-2 w-full mt-1'>
 				<div className='flex flex-col items-start'>
 					<p
-						className={`text-xs ${
-							value < maxValue ? "text-base-600" : "text-base-400"
-						}`}>
+						className={`text-sm `}>
 						Minimum
 					</p>
 					<div className='flex items-center gap-1'>
 						<p
-							className={`text-sm leading-0 ${
-								value > minValue ? "text-base-600" : "text-base-400"
-							}`}>
-							₹
+							className={`text-sm leading-0 text-base-600`}>
+							₹{" "}<span className="text-md">{value.toLocaleString("en-IN")}</span>
 						</p>
-						<input
-							className={`w-20 ${
-								value > minValue ? "text-base-600" : "text-base-600"
-							}`}
-							type='text'
-							value={value.toLocaleString("en-IN")}
-							readOnly
-						/>
 					</div>
 				</div>
 				<div className='flex flex-col items-end'>
 					<p
-						className={`text-xs ${
-							value < maxValue ? "text-base-600" : "text-base-400"
-						}`}>
+						className={`text-sm `}>
 						Maximum
 					</p>
 					<div className='flex items-center gap-1'>
 						<p
-							className={`text-sm leading-0 ${
-								value < maxValue ? "text-base-600" : "text-base-400"
-							}`}>
-							₹
+							className={`text-sm leading-0 text-base-600`}>
+							₹{" "}<span className="text-md">{maxValue.toLocaleString("en-IN")}</span>
 						</p>
-						<input
-							className={`w-[64px] ${
-								value < maxValue ? "text-base-600" : "text-base-600"
-							}`}
-							type='text'
-							value={maxValue.toLocaleString("en-IN")}
-							readOnly
-						/>
+					
 					</div>
 				</div>
 			</div>

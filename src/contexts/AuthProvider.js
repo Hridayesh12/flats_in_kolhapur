@@ -5,11 +5,11 @@ const AuthContext = createContext();
 
 // AuthProvider to manage user state and login modal
 export const AuthProvider = ({ children }) => {
-  const [loginOpen, setLoginOpen] = useState(false);   
-  const[isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const openLogin = (callback) => {
-    console.log("CallBack",callback);
-      setLoginOpen(true);
+    // console.log("CallBack",callback);
+    setLoginOpen(true);
   };
 
   const closeLogin = () => {

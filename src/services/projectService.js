@@ -10,7 +10,7 @@ export const fetchAllProjects = async ({ params }) => {
     if (resp?.data?._id) {
         newParams = { ...params, lead: resp.data._id };
     }
-    console.log("NewParam Check For Hitting Again with Offset", newParams);
+    // console.log("NewParam Check For Hitting Again with Offset", newParams);
     try {
         const response = await instance({
             url: `projectRouter/projects`,  // Fetches all Projects
@@ -36,7 +36,7 @@ export const fetchProjectByDomain = async (domain) => {
 };
 
 export const postLeadToProject = async (projectId) => {
-    console.log(projectId);
+    // console.log(projectId);
     try {
         const response = await instance({
             url: `projectRouter/projectLead/${projectId}`,  // Fetches Project By Id
@@ -60,7 +60,7 @@ export const postPutFavoriteProject = async (projectId) => {
     }
 };
 export const getFavorites = async (projectId) => {
-    console.log(projectId);
+    // console.log(projectId);
     try {
         const response = await instance({
             url: `projectRouter/favorites`,  // Fetches Project By Id
@@ -83,18 +83,18 @@ export const handleDownload = async (url) => {
         // Extract filename from the URL
         const filename = url.brochureurl.split('/').pop(); // Get the last part of the URL
 
-        console.log("Filename", filename);
+        // console.log("Filename", filename);
         // Create a URL for the file
         const blob = new Blob([response.data]);
         const downloadUrl = window.URL.createObjectURL(blob);
 
-        console.log("Blob", blob, "Download Url", downloadUrl);
+        // console.log("Blob", blob, "Download Url", downloadUrl);
         // Create a link element
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.setAttribute('download', filename); // Use the extracted filename
 
-        console.log("Link", link);
+        // console.log("Link", link);
         // Append to the body and trigger the download
         document.body.appendChild(link);
         link.click();
@@ -103,6 +103,6 @@ export const handleDownload = async (url) => {
         link.parentNode.removeChild(link);
         window.URL.revokeObjectURL(downloadUrl); // Clean up the URL object
     } catch (error) {
-        console.error('Error downloading the file:', error);
+        // console.error('Error downloading the file:', error);
     }
 };

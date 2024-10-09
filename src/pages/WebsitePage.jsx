@@ -18,13 +18,14 @@ function WebsitePage() {
 	const location = useLocation();
 	const domain = location.pathname.split("/")[1];
 	const [project, setProject] = useState(null);
+  const [downloadState, setDownloadState] = useState(false);
 	const { openLogin, loginOpen, closeLogin } = useAuth();
 
 	const fetchProject = async (domain) => {
-    const [downloadState, setDownloadState] = useState(false);
+    
 		try {
 			const response = await fetchProjectByDomain(domain);
-			console.log(response);
+			// console.log(response);
 			const projectData = response.data;
 			// Format the data as per your requirement
 			const fetchedProject = {
@@ -66,7 +67,7 @@ function WebsitePage() {
 			};
 			setProject(fetchedProject);
 		} catch (error) {
-			console.error("Error fetching project data:", error.status);
+			// console.error("Error fetching project data:", error.status);
 			openLogin();
 		}
 	};
@@ -76,10 +77,10 @@ function WebsitePage() {
 	const handleDownloadBrochure = async () => {
     setDownloadState(true);
 		const resp = await getCurrentLead();
-		console.log("Resp", resp);
+		// console.log("Resp", resp);
 
 		if (resp.status > 250) {
-			console.log("Working");
+			// console.log("Working");
 			openLogin();
 		} else {
 			closeLogin();
@@ -97,7 +98,7 @@ function WebsitePage() {
 	};
 	// Fetch or set project data here
 	useEffect(() => {
-		console.log(domain);
+		// console.log(domain);
 
 		fetchProject(domain);
 	}, [loginOpen]);
@@ -228,8 +229,8 @@ function WebsitePage() {
 					{downloadState ? 
           <button
          disabled
-          className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
-          Download
+          className='bg-base-500 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
+          Downloading...
         </button> :
         <button
         onClick={() => {
@@ -260,8 +261,8 @@ function WebsitePage() {
           {downloadState ? 
           <button
          disabled
-          className='bg-base-600 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
-          Download
+          className='bg-base-500 text-base-100 mt-10 text-white py-2 px-4 rounded mb-2 text-xl'>
+          Downloading...
         </button> :
         <button
         onClick={() => {

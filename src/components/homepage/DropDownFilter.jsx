@@ -83,7 +83,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showLocationFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[13px] sm:text-sm font-normal'>Location</p>
+					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>Location</p>
 					{locate && !showLocationFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -98,7 +98,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 ${
 						showPriceFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[13px] sm:text-sm font-normal'>Price</p>
+					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>Price</p>
 					{minimumPrice!==100000 && !showPriceFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -115,7 +115,7 @@ const DropDownFilter = () => {
 					className={`flex flex-col items-start gap-0 mr-3 ${
 						showPossessionFilter && "bg-base-600 text-base-100 rounded-md p-1"
 					}`}>
-					<p className='leading-none text-[13px] sm:text-sm font-normal'>Project Status</p>
+					<p className='leading-none text-[13px] sm:text-[16px] font-normal'>Project Status</p>
 					{prStatus && !showPossessionFilter && (
 						<p
 							style={{ fontSize: "0.5rem" }}
@@ -140,7 +140,7 @@ const DropDownFilter = () => {
 			(showLocationFilter || showPriceFilter || showPossessionFilter) ? "visible" : "hidden"
 		} // Animate to 'visible' when any filter is shown
 		exit="exit" // Animate to 'exit' when no filters are shown
-			className={`w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-sm text-base-400 bg-base-100 top-[68px] border-[1px] border-base-700`}
+			className={`w-80 sm:w-96 z-50 absolute shadow-custom-shadow rounded-md flex flex-col items-start text-[13px] sm:text-[16px] text-base-400 bg-base-100 top-[72px] border-[1px] border-base-700`}
 		>
 			{/* Location Filter Dropdown */}
 			{showLocationFilter && (
