@@ -261,6 +261,8 @@ function WebsitePage() {
 							<div className="grid grid-cols-2 gap-2 w-full h-full">
 							
 								<img src={`${assetsUrl}/assets/images/images.png`} alt="Construction Gallery Image" className="h-[100px] sm:h-[200px] object-cover"/>
+								<img src={`${assetsUrl}/assets/images/images.png`} alt="Construction Gallery Image" className="h-[100px] sm:h-[200px] object-cover"/>
+								<img src={`${assetsUrl}/assets/images/images.png`} alt="Construction Gallery Image" className="h-[100px] sm:h-[200px] object-cover"/>
 						
 							</div>
 							}
