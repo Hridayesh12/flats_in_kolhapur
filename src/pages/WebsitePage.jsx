@@ -256,7 +256,14 @@ function WebsitePage() {
 							<h2 className='text-2xl sm:text-4xl my-4'>Construction Gallery</h2>
 							{project?.constructionGallery.length > 0 ? (
 								<ImgGallery imagesArray={project?.constructionGallery} />
-							) : 'Construction Gallery coming soon'}
+								
+							) : 
+							<div className="grid grid-cols-2 gap-2 w-full h-full">
+							
+								<img src={`${assetsUrl}/assets/images/images.png`} alt="Construction Gallery Image" className="h-[100px] sm:h-[200px] object-cover"/>
+						
+							</div>
+							}
 						</div>
 					</div>
 
