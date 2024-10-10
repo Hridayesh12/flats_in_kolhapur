@@ -196,11 +196,11 @@ function WebsitePage() {
 						<div className='md:col-span-2 h-fit'>
 							<div className='h-full'>
 								<h5 className='text-2xl sm:text-4xl my-4'>Gallery</h5>
-								{project.gallery.length > 0 && (
+								{project.gallery.length > 0 ? (
 									<div className='mt-2 h-fit border-x-2 border-base-100'>
 										<RenderCarousel file={project?.gallery} />
 									</div>
-								)}
+								) : 'Gallery will be added soon'}
 							</div>
 						</div>
 
@@ -245,18 +245,18 @@ function WebsitePage() {
 					<div className='my-2 grid grid-cols-1 md:grid-cols-3 gap-2'>
 						<div className='md:col-span-2'>
 							<h2 className='text-2xl sm:text-4xl my-4'>Floor Plan</h2>
-							{project?.floorPlan.length > 0 && (
+							{project?.floorPlan.length > 0 ? (
 								<div className='mt-2'>
 									<RenderCarousel file={project?.floorPlan} />
 								</div>
-							)}
+							) : 'Floor Plan will be added soon'}
 						</div>
 
 						<div className='md:col-span-1'>
 							<h2 className='text-2xl sm:text-4xl my-4'>Construction Gallery</h2>
-							{project?.constructionGallery.length > 0 && (
+							{project?.constructionGallery.length > 0 ? (
 								<ImgGallery imagesArray={project?.constructionGallery} />
-							)}
+							) : 'Construction Gallery coming soon'}
 						</div>
 					</div>
 

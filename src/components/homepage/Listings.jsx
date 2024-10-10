@@ -90,7 +90,7 @@ const Listings = () => {
 			) : (
 				<>
 					<div
-						className={`flex w-screen flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
+						className={`flex w-full flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
 						{projects?.length > 0 && projects ? (
 							<>
 								{projects?.map((project) => (
