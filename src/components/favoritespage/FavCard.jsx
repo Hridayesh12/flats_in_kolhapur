@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const FavCard = ({ price, bhk, name, location,description, img}) => {
+const FavCard = ({ price, bhk, name, location,description, img, domain}) => {
  
   const navigate = useNavigate();
   return (
-       <div className="animate-pulsebg-base-100 shadow-xl flex border-[1px] border-base-300" onClick={()=>{navigate('/')}}>
+       <div className="animate-pulsebg-base-100 shadow-xl flex border-[1px] border-base-300" onClick={()=>{navigate(`/${domain}`)}}>
       <div className="w-[20%] h-[100%] ">
          <img src={`${img}`} alt="Card" className="object-cover w-full h-full" />
       </div>

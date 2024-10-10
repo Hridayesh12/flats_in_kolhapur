@@ -23,7 +23,7 @@ const FavoritesPage = () => {
 			setIsLoggedIn(true);
 			const getFav = await getFavorites();
 			if(getFav.data){
-				// console.log("Favorite", getFav.data);
+				console.log("Favorite", getFav.data);
 				setFavProject(getFav.data);
 			}
 			
@@ -93,6 +93,7 @@ const FavoritesPage = () => {
 							description={card.projectId.description}
 							img={card.projectId.displayImage}
 							location={card.projectId.location.area}
+							domain={card.projectId.domain}
 						/>
 					))}
 				</div>
