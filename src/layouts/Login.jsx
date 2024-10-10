@@ -25,6 +25,7 @@ const Login = () => {
         setError('');
         setStep(2); // Proceed to OTP input step
       } else {
+        localStorage.setItem('lead_token', response.data.lead_token);
         setIsLoggedIn(true);closeLogin();
         setStep(1);
         setPhone('');
@@ -48,6 +49,8 @@ const Login = () => {
     try {
       const response = await loginAndOtpRoutes({ phone, name, otp });
       if (response.status < 250 || response.status === 'success') {
+        console.log(response.data);
+        localStorage.setItem('lead_token', response.data.lead_token);
         setIsLoggedIn(true);
         closeLogin();
         setStep(1);      
