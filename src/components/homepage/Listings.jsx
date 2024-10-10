@@ -24,7 +24,7 @@ const Listings = () => {
 		setSearching(true);
 		dispatchEvent(
 			setFilters({
-				type: "flat",
+				type: null,
 				config: null,
 				area: null,
 				minPrice: 100000,

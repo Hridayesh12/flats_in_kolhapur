@@ -165,7 +165,7 @@ const DropDownFilter = () => {
 						exit={{ opacity: 0, y: 10 }} // Exit animation
 						transition={{ duration: 0.2 }} // Control the duration of animation
 						className='w-full h-full flex flex-col items-center top-14 rounded-md px-3 py-1 bg-white z-10'>
-						<div className='flex flex-row w-full h-24 rounded-md pl-1 py-1'>
+						<div className='flex flex-row w-full h-28 rounded-md pl-1 py-1'>
 							{/* First List (Vertical List) */}
 							<ul className='grid grid-cols-2 gap-1 items-start w-full h-full overflow-y-auto'>
 								{locations.map((area, index) => (
@@ -220,7 +220,7 @@ const DropDownFilter = () => {
 						exit={{ opacity: 0, y: 10 }} // Exit animation
 						transition={{ duration: 0.2 }} // Control the duration of animation
 						className='w-full h-full flex flex-col items-center rounded-md px-3 py-1 bg-white z-10'>
-						<div className='flex flex-row w-full h-24 rounded-md pl-1 py-1'>
+						<div className='flex flex-row w-full h-28 rounded-md pl-1 py-1'>
 							{/* First List (Vertical List) */}
 							<ul className='grid grid-cols-2 gap-1 items-start w-full h-full overflow-y-auto'>
 								{projectStatus.map((status, index) => (

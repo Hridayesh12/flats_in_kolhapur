@@ -17,8 +17,11 @@ const filterSlice = createSlice({
     reducers: {
         setFilters: (state, { payload }) => {
             // console.log("New Payload", payload);
-            if (payload.type) {
+            if (payload.type && payload.type !== 'deselect') {
                 state.type = payload.type
+            }
+            if (payload.type === 'deselect') {
+                state.type = null
             }
             if (payload.config && payload.config !== 'deselect') {
                 state.config = payload.config

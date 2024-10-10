@@ -29,23 +29,40 @@ const TypeFilters = () => {
       style={{ boxShadow: "2px 2px 4px 1px rgba(0, 0, 0, 0.25)" }}
     >
       {types.map((type) => (
-        <div
-          key={type.value}
-          className={`flex flex-col items-center justify-between cursor-pointer min-w-14 sm:min-w-24 min-h-14 max-h-14 sm:max-h-24`}
-          onClick={() => handleTypeChange(type.value)} // Handle click
-        >
-          <img src={type.icon} className='w-8 md:w-10 h-full object-cover' alt={type.name} />
-          {type.value === 'rowhouse' ? 
-        <p className='text-[11px] sm:text-sm md:text-base font-normal text-nowrap ml-1'>{type.name}</p>
-        :
-        <p className='text-[11px] sm:text-sm md:text-base font-normal text-nowrap'>{type.name}</p>  
-        }
-          <div
-            className={`h-px font-bold transition-all duration-300  delay-300 ${
-              activeType === type.value ? "bg-base-600 w-4 sm:w-8" : "bg-base-100 w-0"
-            }`}
-          ></div>
-        </div>
+      <>
+      {activeType === type.value ?
+      <div
+      key={type.value}
+      className={`flex flex-col items-center justify-between cursor-pointer min-w-14 sm:min-w-24 min-h-14 max-h-14 sm:max-h-24`}
+      onClick={() => handleTypeChange('deselect')} // Handle click
+    >
+      <img src={type.icon} className='w-8 md:w-10 h-full object-cover' alt={type.name} />
+      {type.value === 'rowhouse' ? 
+    <p className='text-[11px] sm:text-sm md:text-base font-normal text-nowrap ml-1'>{type.name}</p>
+    :
+    <p className='text-[11px] sm:text-sm md:text-base font-normal text-nowrap'>{type.name}</p>  
+    }
+      <div
+        className={`h-px font-bold transition-all duration-300  delay-300 bg-base-600 w-4 sm:w-8 `}
+      ></div>
+    </div> :
+      <div
+      key={type.value}
+      className={`flex flex-col items-center justify-between cursor-pointer min-w-14 sm:min-w-24 min-h-14 max-h-14 sm:max-h-24`}
+      onClick={() => handleTypeChange(type.value)} // Handle click
+    >
+      <img src={type.icon} className='w-8 md:w-10 h-full object-cover' alt={type.name} />
+      {type.value === 'rowhouse' ? 
+    <p className='text-[11px] sm:text-sm md:text-base font-normal text-nowrap ml-1'>{type.name}</p>
+    :
+    <p className='text-[11px] sm:text-sm md:text-base font-normal text-nowrap'>{type.name}</p>  
+    }
+      <div
+        className={`h-px`}
+      ></div>
+    </div>  
+    }
+      </>
       ))}
     </div>
   );
