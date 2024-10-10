@@ -7,6 +7,7 @@ import {
 	setNextProjects,
 	setProjects,
 } from "../../store/features/projectSlice";
+import ListingSkeleton from "../loaders/homepage/ListingSkeleton";
 
 const Listings = () => {
 	const projects = useSelector((state) => state.projects.projects);
@@ -35,6 +36,7 @@ const Listings = () => {
 		);
 		const params = filters;
 		const response = await fetchAllProjects({ params });
+		console.log(response.data);
 		if (!response.data) {
 			alert("Internal Server Error");
 		} else {
@@ -83,69 +85,77 @@ const Listings = () => {
 			<div className='flex items-center justify-between w-full  py-2 px-4 sm:px-12 sticky z-40 top-0 bg-base-100'>
 				<p className='text-left w-80'>Total Properties: {totalProjects}</p>
 			</div>
-			<div
-				className={`flex w-screen flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
-			
-								{projects?.length > 0 && projects ? 
+			{searching ? (
+				<ListingSkeleton />
+			) : (
+				<>
+					<div
+						className={`flex w-screen flex-wrap relative gap-2 px-0 sm:px-8 mx-auto`}>
+						{projects?.length > 0 && projects ? (
 							<>
-							{projects?.map((project) => (
-								<div className=' mx-auto' key={project?.projectId}>
-									<ProjectCard
-										key={project?._id}
-										image={project?.displayImage}
-										name={project?.title}
-										builder={project?.subtitle}
-										price={(() => {
-											if (project?.configurations.length > 0) {
-												const price = project.configurations[0].price;
+								{projects?.map((project) => (
+									<div className=' mx-auto' key={project?.projectId}>
+										<ProjectCard
+											key={project?._id}
+											image={project?.displayImage}
+											name={project?.title}
+											builder={project?.subtitle}
+											price={(() => {
+												if (project?.configurations.length > 0) {
+													const price = project.configurations[0].price;
 
-												if (price < 1) {
-													// Convert price less than 1 to Lakh (e.g., 0.123 becomes 12.3 Lakh)
-													return `${(price * 100).toFixed(1)} Lakh`;
-												} else {
-													// Convert price greater than or equal to 1 to Cr (e.g., 1.234 becomes 1.2 Cr)
-													return `${price.toFixed(1)} Cr`;
+													if (price < 1) {
+														// Convert price less than 1 to Lakh (e.g., 0.123 becomes 12.3 Lakh)
+														return `${(price * 100).toFixed(1)} Lakh`;
+													} else {
+														// Convert price greater than or equal to 1 to Cr (e.g., 1.234 becomes 1.2 Cr)
+														return `${price.toFixed(1)} Cr`;
+													}
 												}
-											}
-											return null; // Return null if no configurations exist
-										})()}
-										bhk={(() => {
-											const bhkConfigurations = project?.configurations
-												.map((item) => item.config.match(/\d+/)) // Extract numbers
-												.filter((config) => config) // Filter valid numbers
-												.map(Number) // Convert to numbers
-												.sort((a, b) => a - b); // Sort the configurations in ascending order
+												return null; // Return null if no configurations exist
+											})()}
+											bhk={(() => {
+												const bhkConfigurations = project?.configurations
+													.map((item) => item.config.match(/\d+/)) // Extract numbers
+													.filter((config) => config) // Filter valid numbers
+													.map(Number) // Convert to numbers
+													.sort((a, b) => a - b); // Sort the configurations in ascending order
 
-											if (bhkConfigurations.length === 1) {
-												// Single configuration
-												return `${bhkConfigurations[0]} BHK`;
-											} else if (
-												bhkConfigurations.length > 1 &&
-												bhkConfigurations[bhkConfigurations.length - 1] -
-													bhkConfigurations[0] ===
-													bhkConfigurations.length - 1
-											) {
-												// Continuous range of configurations
-												return `${bhkConfigurations[0]} - ${
-													bhkConfigurations[bhkConfigurations.length - 1]
-												} BHK`;
-											} else {
-												// Multiple non-continuous configurations
-												return bhkConfigurations.join(", ") + " BHK";
-											}
-										})()}
-										location={project?.location.area}
-										domain={project?.domain}
-										desc={project?.description}
-										projectId={project?._id}
-										isFav={project?.isFav}
-									/>
-								</div>
-							))}
-							</> :<div className="mx-auto  my-2 text-xl">No Projects Found In This Category</div>
-							}
-							
-			</div>
+												if (bhkConfigurations.length === 1) {
+													// Single configuration
+													return `${bhkConfigurations[0]} BHK`;
+												} else if (
+													bhkConfigurations.length > 1 &&
+													bhkConfigurations[bhkConfigurations.length - 1] -
+														bhkConfigurations[0] ===
+														bhkConfigurations.length - 1
+												) {
+													// Continuous range of configurations
+													return `${bhkConfigurations[0]} - ${
+														bhkConfigurations[bhkConfigurations.length - 1]
+													} BHK`;
+												} else {
+													// Multiple non-continuous configurations
+													return bhkConfigurations.join(", ") + " BHK";
+												}
+											})()}
+											location={project?.location.area}
+											domain={project?.domain}
+											desc={project?.description}
+											projectId={project?._id}
+											isFav={project?.isFav}
+										/>
+									</div>
+								))}
+							</>
+						) : (
+							<div className='mx-auto  my-2 text-xl'>
+								No Projects Found In This Category
+							</div>
+						)}
+					</div>
+				</>
+			)}
 		</div>
 	);
 };

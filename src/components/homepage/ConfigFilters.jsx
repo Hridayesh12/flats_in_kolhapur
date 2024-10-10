@@ -41,61 +41,62 @@ const ConfigFilters = () => {
 		);
 	};
 
-	// Parent container with stagger animation
-	const containerVariants = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.2, // Stagger children with a 0.2s delay
-			},
-		},
-	};
+	// // Parent container with stagger animation
+	// const containerVariants = {
+	// 	hidden: { opacity: 0 },
+	// 	visible: {
+	// 		opacity: 1,
+	// 		transition: {
+	// 			staggerChildren: 0.2, // Stagger children with a 0.2s delay
+	// 		},
+	// 	},
+	// };
 
-	const itemVariants = {
-		hidden: { opacity: 0, scale: 0 },
-		visible: {
-			opacity: 1,
-			scale: 1,
-		},
-	};
+	// const itemVariants = {
+	// 	hidden: { opacity: 0, scale: 0 },
+	// 	visible: {
+	// 		opacity: 1,
+	// 		scale: 1,
+	// 	},
+	// };
 
 	return (
-		<motion.div
+		<div
 			className='flex flex-row flex-nowrap items-center justify-center pt-4 pb-3 w-full max-w-96 mx-auto gap-1.5'
-			variants={containerVariants}
-			initial='hidden'
-			animate='visible'>
+			// variants={containerVariants}
+			// initial='hidden'
+			// animate='visible'
+			>
 			{/* Display only the configs of the active type */}
 			{selectedConfigurations?.map((config, index) => (
-				<motion.div
+				<div
 					key={`${activeType}-${config}`} // Ensure unique key for each type-config pair
 					// className={`px-2 py-0.5 text-[11px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 ${
 					// 	activeConfig && activeConfig.toUpperCase() === config
 					// 		? "bg-base-400 text-white"
 					// 		: ""
 					// }`}
-					variants={itemVariants}
-					transition={{
-						delay: index * 0.2, // Incremental delay based on index
-					}} // Assigning delay based on index
+					// variants={itemVariants}
+					// transition={{
+					// 	delay: index * 0.2, // Incremental delay based on index
+					// }} // Assigning delay based on index
 				>
 					{activeConfig && activeConfig.toUpperCase() === config ? (
-						<span className='px-2 py-0.5 text-[13px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 bg-base-400 text-white'
+						<span className='px-2 py-0.5 text-[11px] xs:text-[13px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 bg-base-400 text-white'
 						onClick={() => handleConfigChange('deselect')}
 						>
 							{config}
 						</span>
 					) : (
-						<span className='px-2 py-0.5 text-[13px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 '
+						<span className='px-2 py-0.5 text-[11px] xs:text-[13px] border-[1px] border-base-400 cursor-pointer transition-all duration-300 '
 						onClick={() => handleConfigChange(config)}
 						>
 							{config}
 						</span>
 					)}
-				</motion.div>
+				</div>
 			))}
-		</motion.div>
+		</div>
 	);
 };
 

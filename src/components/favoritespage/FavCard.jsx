@@ -4,16 +4,8 @@ import { useNavigate } from 'react-router-dom';
 const FavCard = ({ price, bhk, name, location,description, img}) => {
  
   const navigate = useNavigate();
-  const style = {
-    backgroundImage: `url(${img})`,
-    backgroundSize: 'cover', // Ensures the background image covers the element
-    backgroundPosition: 'center', // Centers the image within the element
-    backgroundRepeat: 'no-repeat', // Prevents the image from repeating
-    height: '100%', // Adjust height as needed
-    width: '100%' // Adjust width as needed
-  };
   return (
-       <div className="bg-base-100 shadow-xl flex border-[1px] border-base-300" >
+       <div className="animate-pulsebg-base-100 shadow-xl flex border-[1px] border-base-300" onClick={()=>{navigate('/')}}>
       <div className="w-[20%] h-[100%] ">
          <img src={`${img}`} alt="Card" className="object-cover w-full h-full" />
       </div>
